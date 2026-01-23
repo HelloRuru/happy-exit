@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelloRuru | 萬用離職導航站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: #FFF9F0; color: #5D4037; }
+        .glass-card { background: rgba(255, 255, 255, 0.9); border-radius: 24px; border: 1px solid #F5E6CA; }
+    </style>
+</head>
+<body class="min-h-screen p-4 flex flex-col items-center justify-center">
+
+    <main class="max-w-md w-full glass-card p-8 shadow-xl text-center">
+        <h1 class="text-3xl font-bold text-[#D4A373] mb-2">HelloRuru 🚀</h1>
+        <p class="text-sm opacity-80 mb-8">華麗轉身，邁向更自由的自己。</p>
+        
+        <div class="space-y-4">
+            <div class="text-left">
+                <label class="block text-xs mb-1 ml-2">入職日期</label>
+                <input type="date" id="joinDate" class="w-full p-3 rounded-2xl border-none bg-orange-50 focus:ring-2 focus:ring-[#D4A373] outline-none">
+            </div>
+            <button onclick="calculate()" class="w-full py-4 bg-[#D4A373] text-white rounded-2xl font-medium hover:scale-105 transition-transform shadow-lg">
+                開始溫暖試算
+            </button>
+        </div>
+
+        <div id="result" class="mt-8 p-4 rounded-2xl bg-white hidden text-sm leading-relaxed border border-[#F5E6CA]">
+            </div>
+
+        <p class="mt-10 text-[10px] text-gray-400 italic">
+            * 內置「三大金律」：本站不提供法律保證，內容僅供參考。
+        </p>
+    </main>
+
+    <script>
+        function calculate() {
+            const date = document.getElementById('joinDate').value;
+            if(!date) return alert('請先選取日期喔！✨');
+            const resDiv = document.getElementById('result');
+            resDiv.classList.remove('hidden');
+            resDiv.innerHTML = "✨ 正在為您連線至 HelloRuru 核心引擎...";
+            // 稍後我們會把這裡連線到 Cloudflare Workers (黑盒)
+        }
+    </script>
+</body>
+</html>
