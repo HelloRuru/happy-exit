@@ -9,40 +9,84 @@
     <style>
         body { font-family: 'Noto Sans TC', sans-serif; background-color: #FFF9F0; color: #5D4037; }
         .glass-card { background: rgba(255, 255, 255, 0.9); border-radius: 24px; border: 1px solid #F5E6CA; }
+        .animate-fade-in { animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="min-h-screen p-4 flex flex-col items-center justify-center">
 
     <main class="max-w-md w-full glass-card p-8 shadow-xl text-center">
         <h1 class="text-3xl font-bold text-[#D4A373] mb-2">HelloRuru 🚀</h1>
-        <p class="text-sm opacity-80 mb-8">華麗轉身，邁向更自由的自己。</p>
+        <p class="text-sm opacity-80 mb-8">新的開始，從溫暖的告別開始。</p>
         
         <div class="space-y-4">
             <div class="text-left">
-                <label class="block text-xs mb-1 ml-2">入職日期</label>
+                <label class="block text-xs mb-1 ml-2 text-[#8D6E63]">入職日期</label>
                 <input type="date" id="joinDate" class="w-full p-3 rounded-2xl border-none bg-orange-50 focus:ring-2 focus:ring-[#D4A373] outline-none">
             </div>
-            <button onclick="calculate()" class="w-full py-4 bg-[#D4A373] text-white rounded-2xl font-medium hover:scale-105 transition-transform shadow-lg">
+            <button onclick="calculate()" id="btn" class="w-full py-4 bg-[#D4A373] text-white rounded-2xl font-medium hover:scale-105 transition-transform shadow-lg">
                 開始溫暖試算
             </button>
         </div>
 
-        <div id="result" class="mt-8 p-4 rounded-2xl bg-white hidden text-sm leading-relaxed border border-[#F5E6CA]">
+        <div id="result" class="mt-8 p-6 rounded-2xl bg-white hidden text-sm leading-relaxed border border-[#F5E6CA] text-left">
             </div>
 
         <p class="mt-10 text-[10px] text-gray-400 italic">
-            * 內置「三大金律」：本站不提供法律保證，內容僅供參考。
+            * 本站依據勞基法計算，內容僅供參考，不代表法律保證。
         </p>
     </main>
 
     <script>
-        function calculate() {
-            const date = document.getElementById('joinDate').value;
-            if(!date) return alert('請先選取日期喔！✨');
+        async function calculate() {
+            const dateInput = document.getElementById('joinDate').value;
+            if(!dateInput) return alert('請先選取日期喔！✨');
+            
             const resDiv = document.getElementById('result');
+            const btn = document.getElementById('btn');
+            
             resDiv.classList.remove('hidden');
-            resDiv.innerHTML = "✨ 正在為您連線至 HelloRuru 核心引擎...";
-            // 稍後我們會把這裡連線到 Cloudflare Workers (黑盒)
+            resDiv.innerHTML = "✨ 正在連線至 HelloRuru 核心引擎...";
+            btn.disabled = true;
+
+            try {
+                // 這裡就是你的黑盒網址
+                const response = await fetch('https://helloruru-engine.vmpvmp1017.workers.dev/', {
+                    method: 'POST',
+                    body: JSON.stringify({ joinDate: dateInput }),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                
+                const data = await response.json();
+                
+                resDiv.innerHTML = `
+                    <div class="animate-fade-in">
+                        <div class="text-[#D4A373] font-bold text-xl mb-4 text-center">試算完成 ☕</div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between border-b border-orange-50 pb-2">
+                                <span>辛苦累積的年資</span>
+                                <span class="font-medium">${data.years} 年</span>
+                            </div>
+                            <div class="flex justify-between border-b border-orange-50 pb-2">
+                                <span>法定預告期</span>
+                                <span class="text-orange-500 font-bold">${data.notice} 天</span>
+                            </div>
+                            <div class="flex justify-between border-b border-orange-50 pb-2">
+                                <span>預估資遣費基數</span>
+                                <span class="font-medium">${data.money} 個月</span>
+                            </div>
+                        </div>
+                        <div class="mt-6 p-4 bg-orange-50 rounded-2xl text-[12px] text-[#8D6E63] leading-relaxed">
+                            🌿 <strong>HelloRuru 悄悄話：</strong><br>
+                            ${data.message}
+                        </div>
+                    </div>
+                `;
+            } catch (error) {
+                resDiv.innerHTML = "❌ 引擎連線失敗，請檢查網路後再試。";
+            } finally {
+                btn.disabled = false;
+            }
         }
     </script>
 </body>
