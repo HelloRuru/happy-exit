@@ -100,7 +100,7 @@ function App() {
     const blob = new Blob([html], { type: 'text/html;charset=utf-8;' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = '離職清單.html'; a.click();
   };
-LinkedIn = () => `【新的旅程】\n\n經過 ${calc.tenure.years>0?calc.tenure.years+' 年':''}${calc.tenure.months>0?calc.tenure.months+' 個月':''}，我即將離開 ${form.company||'現職'}，展開下一篇章。\n\n感謝所有一起奮鬥的夥伴們！\n\n#職涯 #感謝 #新開始`;
+const genLinkedIn = () => `【新的旅程】\n\n經過 ${calc.tenure.years>0?calc.tenure.years+' 年':''}${calc.tenure.months>0?calc.tenure.months+' 個月':''}，我即將離開 ${form.company||'現職'}，展開下一篇章。\n\n感謝所有一起奮鬥的夥伴們！\n\n#職涯 #感謝 #新開始`;
   const genRef = () => `${form.supervisorName||'主管'} 您好：\n\n在我離開前，想請教一件事。\n\n這段時間在您帶領下學到很多，不知是否方便在 LinkedIn 上給我一段推薦？\n\n這對我職涯發展很有幫助。\n\n如果不方便，完全沒關係！\n\n謝謝！\n${form.employeeName||''}`;
 
   // Components
