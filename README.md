@@ -76,6 +76,12 @@ npm run preview
 - **Tailwind CSS** 樣式
 - **LocalStorage** 資料儲存（隱私優先，不上傳伺服器）
 
+## 🔤 字型授權
+
+本專案使用 [jf open 粉圓 (Huninn)](https://justfont.com/huninn/)，由 [justfont](https://justfont.com) 基於 Kosugi Maru 調整開發，以 [SIL Open Font License 1.1](https://openfontlicense.org/) 開源釋出。
+
+感謝 justfont 團隊為臺灣設計社群的貢獻 ❤️
+
 ## 📱 特色
 
 - 📱 響應式設計，支援手機/平板/桌面
