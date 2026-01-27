@@ -6,7 +6,8 @@
 
 @font-face {
   font-family: 'jf-openhuninn';
-  src: url('https://cdn.jsdelivr.net/npm/jf-openhuninn@2.1/webfont/jf-openhuninn-1.1.woff2') format('woff2');
+  src: url('https://cdn.jsdelivr.net/gh/justfont/open-huninn-font@master/font/jf-openhuninn-2.1.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/justfont/open-huninn-font@master/font/jf-openhuninn-2.1.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
