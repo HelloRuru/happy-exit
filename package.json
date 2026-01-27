@@ -1,8 +1,28 @@
 {
-  "name": "resignation-helper",
-  "private": true,
+  "name": "happy-exit",
   "version": "1.0.0",
+  "description": "離職全能導航幫手 - 幫助台灣勞工順利離職的互動式工具",
+  "private": true,
   "type": "module",
+  "author": {
+    "name": "Kaoru Tsai (蔡沛錡)",
+    "email": "kaoru@kaorutsai.com",
+    "url": "https://kaorutsai.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HelloRuru/happy-exit.git"
+  },
+  "homepage": "https://github.com/HelloRuru/happy-exit",
+  "keywords": [
+    "resignation",
+    "taiwan",
+    "labor-law",
+    "離職",
+    "勞基法",
+    "交接清單"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -17,6 +37,7 @@
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
     "autoprefixer": "^10.4.20",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15",
     "typescript": "^5.6.2",

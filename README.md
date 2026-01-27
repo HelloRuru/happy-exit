@@ -89,10 +89,48 @@ npm run preview
 本工具依據《勞動基準法》提供計算與建議，僅供參考。
 如有勞資爭議，請撥打 **1955** 勞工諮詢專線，或向當地勞工局申請調解。
 
-## 📄 授權
+---
 
-MIT License
+## 📜 版權聲明 (Copyright Notice)
+
+```
+Copyright © 2025 Kaoru Tsai (蔡沛錡). All Rights Reserved.
+```
+
+### 著作權聲明
+
+本軟體「離職全能導航幫手 (Happy Exit)」（以下簡稱「本軟體」）之所有內容，包括但不限於：
+- 原始碼 (Source Code)
+- 使用者介面設計 (UI Design)
+- 使用者體驗設計 (UX Design)
+- 圖形、圖示與視覺元素
+- 文字內容與範本
+- 演算法與商業邏輯
+
+均為 **Kaoru Tsai (蔡沛錡)** 之智慧財產，受中華民國《著作權法》及國際著作權公約保護。
+
+### 授權條款
+
+本軟體採用 **MIT License** 授權，您可以：
+- ✅ 自由使用、複製、修改本軟體
+- ✅ 將本軟體用於商業或非商業目的
+- ✅ 散布本軟體之原始或修改版本
+
+但必須：
+- ⚠️ 保留原始版權聲明與授權條款
+- ⚠️ 註明原作者 Kaoru Tsai (蔡沛錡)
+
+### 免責聲明
+
+本軟體按「現狀」提供，不附帶任何明示或暗示的保證。作者不對使用本軟體所造成之任何損害負責。
+
+### 聯絡資訊
+
+- **作者 (Author):** Kaoru Tsai (蔡沛錡)
+- **Email:** kaoru@kaorutsai.com
+- **Website:** https://kaorutsai.com
+- **GitHub:** https://github.com/HelloRuru
 
 ---
 
-Made with ❤️ for Taiwan workers
+Made with ❤️ by Kaoru Tsai for Taiwan workers
