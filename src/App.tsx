@@ -100,7 +100,21 @@ function App() {
     const blob = new Blob([html], { type: 'text/html;charset=utf-8;' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = '離職清單.html'; a.click();
   };
-const genLinkedIn = () => `【新的旅程】\n\n經過 ${calc.tenure.years>0?calc.tenure.years+' 年':''}${calc.tenure.months>0?calc.tenure.months+' 個月':''}，我即將離開 ${form.company||'現職'}，展開下一篇章。\n\n感謝所有一起奮鬥的夥伴們！\n\n#職涯 #感謝 #新開始`;
+const reasonMap: Record<string,string> = { career:'職涯發展', family:'家庭因素', health:'健康因素', study:'進修學習', relocation:'搬遷通勤', other:'個人因素' };
+  const getReasonText = () => form.reasons.length === 0 ? '個人生涯規劃' : form.reasons.map(r => r === 'other' ? (form.reasonOther || '個人因素') : reasonMap[r]).join('、');
+  const genLetter = () => {
+    const ld = getLeaveDate();
+    const ldStr = ld ? new Date(ld).toLocaleDateString('zh-TW') : '（待定）';
+    if (form.tone === 'formal') return `${form.supervisorName || '主管'}鈞鑒：\n\n本人${form.employeeName || ''}因${getReasonText()}，擬於 ${ldStr} 離職。\n\n${form.gratitude || '在職期間承蒙指導，謹致謝忱。'}${form.hasHandover ? '\n\n離職前將完成工作交接，確保業務順利銜接。' : ''}\n\n敬請核准。\n\n此致\n${form.company || '公司'}${form.department ? ' ' + form.department : ''}\n\n${form.employeeName || '員工'}\n${new Date().toLocaleDateString('zh-TW')}`;
+    if (form.tone === 'simple') return `${form.supervisorName || '主管'}您好，\n\n因${getReasonText()}，我預計 ${ldStr} 離職。${form.hasHandover ? '會完成交接。' : ''}\n\n${form.gratitude || '謝謝這段時間的照顧。'}\n\n${form.employeeName || ''}`;
+    return `${form.supervisorName || '主管'}您好：\n\n經過慎重考慮，因${getReasonText()}，我決定離開目前的職位。\n\n預計最後工作日為 ${ldStr}。\n\n${form.gratitude || '感謝您這段時間的指導與照顧，讓我學習成長很多。'}${form.hasHandover ? '\n\n在離職前，我會確實完成手邊工作的交接，讓後續業務能順利進行。' : ''}\n\n再次感謝，祝團隊順利！\n\n${form.employeeName || ''}`;
+  };
+  const genSupervisor = () => `${form.supervisorName || '主管'}您好：\n\n有件事想當面向您報告，想跟您約個時間談談。\n\n請問這週什麼時候方便？\n\n${form.employeeName || ''}`;
+  const genHR = () => `人資同仁您好：\n\n我是${form.department ? form.department + '的' : ''}${form.employeeName || '員工'}，已向主管提出離職申請。\n\n預計最後工作日：${getLeaveDate() ? new Date(getLeaveDate()).toLocaleDateString('zh-TW') : '（待定）'}\n\n煩請協助後續離職手續，謝謝！\n\n${form.employeeName || ''}`;
+  const genColleague = () => `各位同事：\n\n在這邊跟大家說聲再見！\n\n${calc.tenure.years > 0 || calc.tenure.months > 0 ? `這${calc.tenure.years > 0 ? calc.tenure.years + '年' : ''}${calc.tenure.months > 0 ? calc.tenure.months + '個月' : ''}` : '這段時間'}，感謝大家的照顧與合作。\n\n我的最後工作日是 ${getLeaveDate() ? new Date(getLeaveDate()).toLocaleDateString('zh-TW') : '（待定）'}。\n\n希望未來還有機會再見！\n\n祝大家工作順利 🙂\n\n${form.employeeName || ''}`;
+  const genVendor = () => `您好：\n\n我是${form.company || '公司'}${form.department ? form.department : ''}的${form.employeeName || '窗口'}。\n\n因職務異動，我將於 ${getLeaveDate() ? new Date(getLeaveDate()).toLocaleDateString('zh-TW') : '近期'} 離職。\n\n後續業務將由同事接手，届時會再通知新窗口聯繫方式。\n\n感謝您一直以來的配合！\n\n${form.employeeName || ''}`;
+  const genJobSearch = () => `主旨：謀職假申請\n\n${form.supervisorName || '主管'}您好：\n\n依《勞基法》第16條第2項，於預告期間申請謀職假。\n\n申請天數：${calc.jobSearchLeave} 天（預告期每週2日）\n預計使用日期：＿＿＿＿\n\n懇請核准，謝謝！\n\n${form.employeeName || ''}`;
+  const genLinkedIn = () => `【新的旅程】\n\n經過 ${calc.tenure.years>0?calc.tenure.years+' 年':''}${calc.tenure.months>0?calc.tenure.months+' 個月':''}，我即將離開 ${form.company||'現職'}，展開下一篇章。\n\n感謝所有一起奮鬥的夥伴們！\n\n#職涯 #感謝 #新開始`;
   const genRef = () => `${form.supervisorName||'主管'} 您好：\n\n在我離開前，想請教一件事。\n\n這段時間在您帶領下學到很多，不知是否方便在 LinkedIn 上給我一段推薦？\n\n這對我職涯發展很有幫助。\n\n如果不方便，完全沒關係！\n\n謝謝！\n${form.employeeName||''}`;
 
   // Components
