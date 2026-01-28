@@ -14,17 +14,23 @@ const CalcIcon = ({ className = "w-5 h-5" }: { className?: string }) => <svg vie
 const ShieldIcon = ({ className = "w-5 h-5" }: { className?: string }) => <svg viewBox="0 0 24 24" fill="none" className={className} stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>;
 const FileIcon = ({ className = "w-5 h-5" }: { className?: string }) => <svg viewBox="0 0 24 24" fill="none" className={className} stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>;
 
-// Reusable Components (defined outside App to prevent re-creation)
+// Reusable Components
 const Privacy = () => <div className="flex items-center justify-center gap-2 text-xs text-gray-500 py-2"><LockIcon className="w-3 h-3"/><span>資料僅存在你的瀏覽器</span></div>;
-const Legal = ({children}:{children:ReactNode}) => <div className="bg-amber-50 border-l-4 border-amber-400 p-3 rounded-r-xl"><div className="flex items-start gap-2"><InfoIcon className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5"/><div className="text-xs text-amber-800">{children}</div></div></div>;
-const Warn = ({children}:{children:ReactNode}) => <div className="bg-red-50 border-l-4 border-red-400 p-3 rounded-r-xl"><div className="flex items-start gap-2"><AlertIcon className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5"/><div className="text-xs text-red-800">{children}</div></div></div>;
-const Footer = () => <div className="mt-4 p-3 bg-white/80 rounded-xl border border-gray-100 text-center"><p className="text-xs text-gray-600">⚠️ 依《勞基法》計算，僅供參考。諮詢請洽 <a href="tel:1955" className="text-[#6B8CAE] font-bold">1955</a></p><Privacy/><p className="text-xs text-gray-400 mt-2">© 2026 <a href="https://kaorutsai.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#6B8CAE]">Kaoru Tsai</a>. All Rights Reserved.</p></div>;
-const Page = ({children}:{children:ReactNode}) => <div className="min-h-screen w-full bg-gradient-to-br from-[#FFF9F0] to-[#FFD97D]/10 p-3 sm:p-4 md:p-6"><div className="w-full max-w-2xl mx-auto space-y-4">{children}</div></div>;
-const Btn = ({onClick,disabled,variant='primary',children}:{onClick:()=>void;disabled?:boolean;variant?:string;children:ReactNode}) => <button onClick={onClick} disabled={disabled} className={`flex-1 py-3 px-4 rounded-full font-medium text-sm transition-all flex items-center justify-center gap-1 ${variant==='primary'?'bg-[#6B8CAE] text-white hover:bg-[#6B8CAE]/90 disabled:bg-gray-300 disabled:cursor-not-allowed':'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>{children}</button>;
-const Progress = ({n,t}:{n:number;t:number}) => <div className="flex items-center gap-2 mb-2"><div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden"><div className="h-full bg-[#6B8CAE] transition-all" style={{width:`${(n/t)*100}%`}}/></div><span className="text-xs text-gray-500">{n}/{t}</span></div>;
-const Enc = ({text}:{text:string}) => <div className="bg-gradient-to-r from-[#FFD97D]/30 to-[#FFB6A3]/20 rounded-xl p-3"><p className="text-[#6B8CAE] text-sm">{text}</p></div>;
-const Menu = ({icon,title,desc,onClick,badge}:{icon:ReactNode;title:string;desc:string;onClick:()=>void;badge?:string}) => <button onClick={onClick} className="w-full bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-all text-left flex items-start gap-3 border border-gray-100"><div className="w-10 h-10 rounded-full bg-[#6B8CAE]/10 flex items-center justify-center text-[#6B8CAE] flex-shrink-0">{icon}</div><div className="flex-1"><div className="flex items-center gap-2"><h3 className="font-bold text-gray-800">{title}</h3>{badge&&<span className="text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded-full">{badge}</span>}</div><p className="text-xs text-gray-500 mt-1">{desc}</p></div><ChevronRight className="w-5 h-5 text-gray-400"/></button>;
-const CopyBtn = ({text,id,copiedId,onCopy}:{text:string;id:string;copiedId:string|null;onCopy:(t:string,id:string)=>void}) => <button onClick={()=>onCopy(text,id)} className="flex items-center gap-1 px-3 py-1.5 bg-[#6B8CAE] text-white rounded-lg text-xs hover:bg-[#6B8CAE]/90">{copiedId===id?<CheckIcon className="w-3 h-3"/>:<CopyIcon className="w-3 h-3"/>}{copiedId===id?'已複製':'複製'}</button>;
+const Legal = ({children}:{children:ReactNode}) => <div className="bg-amber-50 border-l-4 border-amber-400 p-3 rounded-r-xl overflow-hidden"><div className="flex items-start gap-2"><InfoIcon className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5"/><div className="text-xs text-amber-800 min-w-0">{children}</div></div></div>;
+const Warn = ({children}:{children:ReactNode}) => <div className="bg-red-50 border-l-4 border-red-400 p-3 rounded-r-xl overflow-hidden"><div className="flex items-start gap-2"><AlertIcon className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5"/><div className="text-xs text-red-800 min-w-0">{children}</div></div></div>;
+const Footer = () => <div className="mt-4 p-3 bg-white/80 rounded-xl border border-gray-100 text-center overflow-hidden"><p className="text-xs text-gray-600">⚠️ 依《勞基法》計算，僅供參考。諮詢請洽 <a href="tel:1955" className="text-[#6B8CAE] font-bold">1955</a></p><Privacy/><p className="text-xs text-gray-400 mt-2">© 2026 <a href="https://kaorutsai.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#6B8CAE]">Kaoru Tsai</a>. All Rights Reserved.</p></div>;
+const Page = ({children}:{children:ReactNode}) => <div className="min-h-screen w-full bg-gradient-to-br from-[#FFF9F0] to-[#FFD97D]/10 p-3 sm:p-4 md:p-6 overflow-x-hidden"><div className="w-full max-w-2xl mx-auto space-y-4">{children}</div></div>;
+const Btn = ({onClick,disabled,variant='primary',children}:{onClick:()=>void;disabled?:boolean;variant?:string;children:ReactNode}) => <button onClick={onClick} disabled={disabled} className={`flex-1 py-3 px-4 rounded-full font-medium text-sm transition-all flex items-center justify-center gap-1 min-w-0 ${variant==='primary'?'bg-[#6B8CAE] text-white hover:bg-[#6B8CAE]/90 disabled:bg-gray-300 disabled:cursor-not-allowed':'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>{children}</button>;
+const Progress = ({n,t}:{n:number;t:number}) => <div className="flex items-center gap-2 mb-2"><div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden"><div className="h-full bg-[#6B8CAE] transition-all" style={{width:`${(n/t)*100}%`}}/></div><span className="text-xs text-gray-500 flex-shrink-0">{n}/{t}</span></div>;
+const Enc = ({text}:{text:string}) => <div className="bg-gradient-to-r from-[#FFD97D]/30 to-[#FFB6A3]/20 rounded-xl p-3 overflow-hidden"><p className="text-[#6B8CAE] text-sm break-words">{text}</p></div>;
+const Menu = ({icon,title,desc,onClick,badge}:{icon:ReactNode;title:string;desc:string;onClick:()=>void;badge?:string}) => <button onClick={onClick} className="w-full bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-all text-left flex items-start gap-3 border border-gray-100 overflow-hidden"><div className="w-10 h-10 rounded-full bg-[#6B8CAE]/10 flex items-center justify-center text-[#6B8CAE] flex-shrink-0">{icon}</div><div className="flex-1 min-w-0"><div className="flex items-center gap-2 flex-wrap"><h3 className="font-bold text-gray-800">{title}</h3>{badge&&<span className="text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded-full flex-shrink-0">{badge}</span>}</div><p className="text-xs text-gray-500 mt-1 break-words">{desc}</p></div><ChevronRight className="w-5 h-5 text-gray-400 flex-shrink-0"/></button>;
+const CopyBtn = ({text,id,copiedId,onCopy}:{text:string;id:string;copiedId:string|null;onCopy:(t:string,id:string)=>void}) => <button onClick={()=>onCopy(text,id)} className="flex items-center gap-1 px-3 py-1.5 bg-[#6B8CAE] text-white rounded-lg text-xs hover:bg-[#6B8CAE]/90 flex-shrink-0 whitespace-nowrap">{copiedId===id?<CheckIcon className="w-3 h-3"/>:<CopyIcon className="w-3 h-3"/>}{copiedId===id?'已複製':'複製'}</button>;
+
+// Card component for consistent styling
+const Card = ({children, className = ''}:{children:ReactNode;className?:string}) => <div className={`bg-white rounded-xl p-4 shadow-lg overflow-hidden ${className}`}>{children}</div>;
+
+// Row component for flex items that might overflow
+const Row = ({children, className = ''}:{children:ReactNode;className?:string}) => <div className={`flex justify-between items-center gap-2 ${className}`}>{children}</div>;
 
 interface ChecklistItem { id: string; text: string; checked: boolean; category: string; priority: 'must' | 'should' | 'optional'; note?: string; }
 
@@ -137,34 +143,697 @@ function App() {
   const genLinkedIn = () => `【新的旅程】\n\n經過 ${calc.tenure.years>0?calc.tenure.years+' 年':''}${calc.tenure.months>0?calc.tenure.months+' 個月':''}，我即將離開 ${form.company||'現職'}，展開下一篇章。\n\n感謝所有一起奮鬥的夥伴們！\n\n#職涯 #感謝 #新開始`;
   const genRef = () => `${form.supervisorName||'主管'} 您好：\n\n在我離開前，想請教一件事。\n\n這段時間在您帶領下學到很多，不知是否方便在 LinkedIn 上給我一段推薦？\n\n這對我職涯發展很有幫助。\n\n如果不方便，完全沒關係！\n\n謝謝！\n${form.employeeName||''}`;
 
-
   // PAGES
-  if(stage==='welcome') return <Page><div className="text-center space-y-4 py-6"><h1 className="text-3xl sm:text-4xl font-bold text-[#6B8CAE]">離職全能導航幫手</h1><p className="text-lg text-gray-600">新的開始，從溫暖的告別開始 ✨</p><div className="bg-gradient-to-r from-[#FFD97D]/20 to-[#FFB6A3]/20 rounded-2xl p-4"><p className="text-[#6B8CAE]">每一段旅程都有終點。<br/>讓我們一起好好規劃這個轉變。</p></div><div className="bg-white rounded-2xl p-4 shadow-md text-left"><h3 className="font-bold text-gray-800 mb-2">功能：</h3><ul className="space-y-1 text-sm text-gray-600"><li>✓ 計算預告期、特休、資遣費</li><li>✓ 確認法律權益</li><li>✓ 離職信與Email範本</li><li>✓ 完整交接清單（可輸出）</li><li>✓ 數位安全指南</li></ul></div><button onClick={()=>setStage('join-date')} className="w-full bg-[#6B8CAE] text-white py-3 rounded-full font-medium">開始規劃 🚀</button><Privacy/></div></Page>;
+  if(stage==='welcome') return (
+    <Page>
+      <div className="text-center space-y-4 py-6">
+        <h1 className="text-3xl sm:text-4xl font-bold text-[#6B8CAE]">離職全能導航幫手</h1>
+        <p className="text-lg text-gray-600">新的開始，從溫暖的告別開始 ✨</p>
+        <div className="bg-gradient-to-r from-[#FFD97D]/20 to-[#FFB6A3]/20 rounded-2xl p-4">
+          <p className="text-[#6B8CAE]">每一段旅程都有終點。<br/>讓我們一起好好規劃這個轉變。</p>
+        </div>
+        <Card className="text-left">
+          <h3 className="font-bold text-gray-800 mb-2">功能：</h3>
+          <ul className="space-y-1 text-sm text-gray-600">
+            <li>✓ 計算預告期、特休、資遣費</li>
+            <li>✓ 確認法律權益</li>
+            <li>✓ 離職信與Email範本</li>
+            <li>✓ 完整交接清單（可輸出）</li>
+            <li>✓ 數位安全指南</li>
+          </ul>
+        </Card>
+        <button onClick={()=>setStage('join-date')} className="w-full bg-[#6B8CAE] text-white py-3 rounded-full font-medium">開始規劃 🚀</button>
+        <Privacy/>
+      </div>
+    </Page>
+  );
 
-  if(stage==='join-date') return <Page><Progress n={1} t={10}/><Enc text="🌱 改變需要勇氣，你已經踏出第一步。"/><div className="bg-white rounded-xl p-4 shadow-lg"><label className="block text-lg font-bold text-gray-800 mb-1">到職日期？</label><p className="text-xs text-gray-500 mb-3">大概日期即可</p><input type="date" value={form.joinDate} onChange={e=>updateForm('joinDate',e.target.value)} className="w-full px-3 py-2.5 border-2 border-[#6B8CAE]/30 rounded-xl focus:outline-none focus:border-[#6B8CAE]"/></div><Legal>依《勞基法》§84-2，年資自受僱日起算。</Legal><div className="flex gap-3"><Btn onClick={()=>setStage('welcome')} variant="secondary"><ChevronLeft className="w-4 h-4"/></Btn><Btn onClick={()=>setStage('leave-date')} disabled={!form.joinDate}>下一步 <ChevronRight className="w-4 h-4"/></Btn></div><Footer/></Page>;
+  if(stage==='join-date') return (
+    <Page>
+      <Progress n={1} t={10}/>
+      <Enc text="🌱 改變需要勇氣，你已經踏出第一步。"/>
+      <Card>
+        <label className="block text-lg font-bold text-gray-800 mb-1">到職日期？</label>
+        <p className="text-xs text-gray-500 mb-3">大概日期即可</p>
+        <input type="date" value={form.joinDate} onChange={e=>updateForm('joinDate',e.target.value)} className="w-full max-w-full px-3 py-2.5 border-2 border-[#6B8CAE]/30 rounded-xl focus:outline-none focus:border-[#6B8CAE] box-border"/>
+      </Card>
+      <Legal>依《勞基法》§84-2，年資自受僱日起算。</Legal>
+      <div className="flex gap-3">
+        <Btn onClick={()=>setStage('welcome')} variant="secondary"><ChevronLeft className="w-4 h-4"/></Btn>
+        <Btn onClick={()=>setStage('leave-date')} disabled={!form.joinDate}>下一步 <ChevronRight className="w-4 h-4"/></Btn>
+      </div>
+      <Footer/>
+    </Page>
+  );
 
-  if(stage==='leave-date') { const ct=calcTenure(form.joinDate,new Date().toISOString().split('T')[0]); return <Page><Progress n={2} t={10}/><Enc text="🗓️ 給自己充足的時間說再見。"/><div className="bg-white rounded-xl p-4 shadow-lg space-y-4"><div><div className="text-sm text-gray-500 mb-1">到職日期</div><div className="text-xl font-bold text-[#6B8CAE] bg-[#6B8CAE]/10 rounded-xl p-3 text-center">{new Date(form.joinDate).toLocaleDateString('zh-TW')}</div><div className="text-center mt-1 text-sm text-gray-600">年資約 {ct.years} 年 {ct.months} 個月</div></div><div className="border-t pt-4"><h3 className="font-bold text-gray-800 mb-3">決定離職日期了嗎？</h3><div className="space-y-2"><label className={`block p-3 border-2 rounded-xl cursor-pointer overflow-hidden ${dateMode==='known'?'border-[#6B8CAE] bg-[#6B8CAE]/5':'border-gray-200'}`}><div className="flex items-start gap-3"><input type="radio" checked={dateMode==='known'} onChange={()=>setDateMode('known')} className="mt-1 flex-shrink-0"/><div className="flex-1 min-w-0"><div className="font-bold text-sm">✓ 是，已決定最後上班日</div><div className="text-xs text-gray-500 mb-2">告訴你最晚何時提離職</div>{dateMode==='known'&&<input type="date" value={form.leaveDate} onChange={e=>updateForm('leaveDate',e.target.value)} min={form.joinDate} className="w-full max-w-full px-3 py-2 border-2 border-[#6B8CAE]/30 rounded-xl text-sm box-border"/>}</div></div></label><label className={`block p-3 border-2 rounded-xl cursor-pointer overflow-hidden ${dateMode==='unknown'?'border-[#6B8CAE] bg-[#6B8CAE]/5':'border-gray-200'}`}><div className="flex items-start gap-3"><input type="radio" checked={dateMode==='unknown'} onChange={()=>setDateMode('unknown')} className="mt-1 flex-shrink-0"/><div className="flex-1 min-w-0"><div className="font-bold text-sm">🤔 想提離職但不確定時間</div><div className="text-xs text-gray-500 mb-2">告訴你最早何時可離職</div>{dateMode==='unknown'&&<><input type="date" value={form.noticeDate} onChange={e=>updateForm('noticeDate',e.target.value)} min={new Date().toISOString().split('T')[0]} className="w-full max-w-full px-3 py-2 border-2 border-[#6B8CAE]/30 rounded-xl text-sm box-border"/><p className="text-xs text-gray-400 mt-1">可不填，預設今天</p></>}</div></div></label></div></div></div><div className="flex gap-3"><Btn onClick={()=>setStage('join-date')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 上一步</Btn><Btn onClick={()=>{const nd=form.noticeDate||new Date().toISOString().split('T')[0];if(dateMode==='unknown'&&!form.noticeDate)updateForm('noticeDate',nd);doCalc(form.joinDate,dateMode==='known'?form.leaveDate:nd,dateMode==='known');setStage('salary-info');}} disabled={dateMode==='known'&&!form.leaveDate}>下一步 <ChevronRight className="w-4 h-4"/></Btn></div><Footer/></Page>; }
+  if(stage==='leave-date') {
+    const ct = calcTenure(form.joinDate, new Date().toISOString().split('T')[0]);
+    return (
+      <Page>
+        <Progress n={2} t={10}/>
+        <Enc text="🗓️ 給自己充足的時間說再見。"/>
+        <Card className="space-y-4">
+          <div>
+            <div className="text-sm text-gray-500 mb-1">到職日期</div>
+            <div className="text-xl font-bold text-[#6B8CAE] bg-[#6B8CAE]/10 rounded-xl p-3 text-center">{new Date(form.joinDate).toLocaleDateString('zh-TW')}</div>
+            <div className="text-center mt-1 text-sm text-gray-600">年資約 {ct.years} 年 {ct.months} 個月</div>
+          </div>
+          <div className="border-t pt-4">
+            <h3 className="font-bold text-gray-800 mb-3">決定離職日期了嗎？</h3>
+            <div className="space-y-2">
+              <label className={`block p-3 border-2 rounded-xl cursor-pointer overflow-hidden ${dateMode==='known'?'border-[#6B8CAE] bg-[#6B8CAE]/5':'border-gray-200'}`}>
+                <div className="flex items-start gap-3">
+                  <input type="radio" checked={dateMode==='known'} onChange={()=>setDateMode('known')} className="mt-1 flex-shrink-0"/>
+                  <div className="flex-1 min-w-0">
+                    <div className="font-bold text-sm">✓ 是，已決定最後上班日</div>
+                    <div className="text-xs text-gray-500 mb-2">告訴你最晚何時提離職</div>
+                    {dateMode==='known' && <input type="date" value={form.leaveDate} onChange={e=>updateForm('leaveDate',e.target.value)} min={form.joinDate} className="w-full max-w-full px-3 py-2 border-2 border-[#6B8CAE]/30 rounded-xl text-sm box-border"/>}
+                  </div>
+                </div>
+              </label>
+              <label className={`block p-3 border-2 rounded-xl cursor-pointer overflow-hidden ${dateMode==='unknown'?'border-[#6B8CAE] bg-[#6B8CAE]/5':'border-gray-200'}`}>
+                <div className="flex items-start gap-3">
+                  <input type="radio" checked={dateMode==='unknown'} onChange={()=>setDateMode('unknown')} className="mt-1 flex-shrink-0"/>
+                  <div className="flex-1 min-w-0">
+                    <div className="font-bold text-sm">🤔 想提離職但不確定時間</div>
+                    <div className="text-xs text-gray-500 mb-2">告訴你最早何時可離職</div>
+                    {dateMode==='unknown' && (
+                      <>
+                        <input type="date" value={form.noticeDate} onChange={e=>updateForm('noticeDate',e.target.value)} min={new Date().toISOString().split('T')[0]} className="w-full max-w-full px-3 py-2 border-2 border-[#6B8CAE]/30 rounded-xl text-sm box-border"/>
+                        <p className="text-xs text-gray-400 mt-1">可不填，預設今天</p>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </Card>
+        <div className="flex gap-3">
+          <Btn onClick={()=>setStage('join-date')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 上一步</Btn>
+          <Btn onClick={()=>{const nd=form.noticeDate||new Date().toISOString().split('T')[0];if(dateMode==='unknown'&&!form.noticeDate)updateForm('noticeDate',nd);doCalc(form.joinDate,dateMode==='known'?form.leaveDate:nd,dateMode==='known');setStage('salary-info');}} disabled={dateMode==='known'&&!form.leaveDate}>下一步 <ChevronRight className="w-4 h-4"/></Btn>
+        </div>
+        <Footer/>
+      </Page>
+    );
+  }
 
-  if(stage==='salary-info') return <Page><Progress n={3} t={10}/><Enc text="💰 填寫薪資，精算權益"/><div className="bg-white rounded-xl p-4 shadow-lg space-y-4"><p className="text-xs text-gray-500">選填，用於計算特休結算等</p><div><label className="block text-sm font-medium text-gray-700 mb-1">月薪（實領）</label><div className="flex items-center gap-2"><span className="text-gray-500">$</span><input type="text" inputMode="numeric" pattern="[0-9]*" value={form.monthlySalary===0?'':form.monthlySalary} onChange={e=>updateForm('monthlySalary',e.target.value===''?0:Number(e.target.value.replace(/\D/g,'')))} placeholder="例：45000" className="flex-1 px-3 py-2 border rounded-lg text-sm"/></div></div><div><label className="block text-sm font-medium text-gray-700 mb-1">已使用特休</label><input type="text" inputMode="numeric" pattern="[0-9]*" value={form.usedAnnualLeave===0?'':form.usedAnnualLeave} onChange={e=>updateForm('usedAnnualLeave',e.target.value===''?0:Number(e.target.value.replace(/\D/g,'')))} placeholder="例：5" className="w-full px-3 py-2 border rounded-lg text-sm"/></div><div className="border-t pt-4"><label className="flex items-center gap-2 cursor-pointer"><input type="checkbox" checked={form.isInvoluntary} onChange={e=>updateForm('isInvoluntary',e.target.checked)} className="w-4 h-4"/><span className="text-sm text-gray-700">非自願離職（資遣、裁員）</span></label>{form.isInvoluntary&&<div className="mt-3 space-y-3"><div><label className="block text-sm font-medium text-gray-700 mb-1">離職代碼</label><select value={form.severanceReason} onChange={e=>updateForm('severanceReason',e.target.value)} className="w-full px-3 py-2 border rounded-lg text-sm"><option value="">請選擇</option><option value="11-1">11-1 歇業</option><option value="11-2">11-2 轉讓</option><option value="11-3">11-3 虧損</option><option value="11-4">11-4 業務緊縮</option><option value="14">14 雇主違法</option></select><p className="text-xs text-gray-500 mt-1">確認離職證明代碼正確才能申請失業給付</p></div><div className="bg-blue-50 rounded-lg p-3"><p className="text-xs font-medium text-blue-800 mb-2">📋 政府失業補助計算（選填）</p><div className="space-y-2"><div><label className="block text-xs text-gray-600 mb-1">月投保薪資（查勞保明細）</label><div className="flex items-center gap-2"><span className="text-gray-400 text-sm">$</span><input type="text" inputMode="numeric" value={form.insuredSalary===0?'':form.insuredSalary} onChange={e=>updateForm('insuredSalary',e.target.value===''?0:Number(e.target.value.replace(/\D/g,'')))} placeholder="不填則以月薪計算" className="flex-1 px-2 py-1.5 border rounded text-sm"/></div></div><div><label className="block text-xs text-gray-600 mb-1">就保年資（3年內需滿1年）</label><select value={form.insuranceYears} onChange={e=>updateForm('insuranceYears',Number(e.target.value))} className="w-full px-2 py-1.5 border rounded text-sm"><option value={0}>未滿1年</option><option value={1}>1年以上</option></select></div><div><label className="block text-xs text-gray-600 mb-1">扶養人數（無工作收入眷屬）</label><select value={form.dependents} onChange={e=>updateForm('dependents',Number(e.target.value))} className="w-full px-2 py-1.5 border rounded text-sm"><option value={0}>0人</option><option value={1}>1人（+10%）</option><option value={2}>2人以上（+20%）</option></select></div><div className="flex gap-4"><label className="flex items-center gap-1.5 text-xs"><input type="checkbox" checked={form.isOver45} onChange={e=>updateForm('isOver45',e.target.checked)} className="w-3.5 h-3.5"/>年滿45歲</label><label className="flex items-center gap-1.5 text-xs"><input type="checkbox" checked={form.hasDisability} onChange={e=>updateForm('hasDisability',e.target.checked)} className="w-3.5 h-3.5"/>身心障礙</label></div></div></div></div>}</div></div>{form.isInvoluntary&&<Warn><strong>非自願離職注意：</strong>確認離職證明代碼符合勞基法§11或§14</Warn>}<div className="flex gap-3"><Btn onClick={()=>setStage('leave-date')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 上一步</Btn><Btn onClick={()=>{doCalc(form.joinDate,dateMode==='known'?form.leaveDate:form.noticeDate,dateMode==='known');setStage('result');}}>計算 <ChevronRight className="w-4 h-4"/></Btn></div><Footer/></Page>;
+  if(stage==='salary-info') return (
+    <Page>
+      <Progress n={3} t={10}/>
+      <Enc text="💰 填寫薪資，精算權益"/>
+      <Card className="space-y-4">
+        <p className="text-xs text-gray-500">選填，用於計算特休結算等</p>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">月薪（實領）</label>
+          <div className="flex items-center gap-2">
+            <span className="text-gray-500 flex-shrink-0">$</span>
+            <input type="text" inputMode="numeric" pattern="[0-9]*" value={form.monthlySalary===0?'':form.monthlySalary} onChange={e=>updateForm('monthlySalary',e.target.value===''?0:Number(e.target.value.replace(/\D/g,'')))} placeholder="例：45000" className="flex-1 min-w-0 px-3 py-2 border rounded-lg text-sm"/>
+          </div>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">已使用特休</label>
+          <input type="text" inputMode="numeric" pattern="[0-9]*" value={form.usedAnnualLeave===0?'':form.usedAnnualLeave} onChange={e=>updateForm('usedAnnualLeave',e.target.value===''?0:Number(e.target.value.replace(/\D/g,'')))} placeholder="例：5" className="w-full px-3 py-2 border rounded-lg text-sm"/>
+        </div>
+        <div className="border-t pt-4">
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" checked={form.isInvoluntary} onChange={e=>updateForm('isInvoluntary',e.target.checked)} className="w-4 h-4 flex-shrink-0"/>
+            <span className="text-sm text-gray-700">非自願離職（資遣、裁員）</span>
+          </label>
+          {form.isInvoluntary && (
+            <div className="mt-3 space-y-3">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">離職代碼</label>
+                <select value={form.severanceReason} onChange={e=>updateForm('severanceReason',e.target.value)} className="w-full px-3 py-2 border rounded-lg text-sm">
+                  <option value="">請選擇</option>
+                  <option value="11-1">11-1 歇業</option>
+                  <option value="11-2">11-2 轉讓</option>
+                  <option value="11-3">11-3 虧損</option>
+                  <option value="11-4">11-4 業務緊縮</option>
+                  <option value="14">14 雇主違法</option>
+                </select>
+                <p className="text-xs text-gray-500 mt-1">確認離職證明代碼正確才能申請失業給付</p>
+              </div>
+              <div className="bg-blue-50 rounded-lg p-3 overflow-hidden">
+                <p className="text-xs font-medium text-blue-800 mb-2">📋 政府失業補助計算（選填）</p>
+                <div className="space-y-2">
+                  <div>
+                    <label className="block text-xs text-gray-600 mb-1">月投保薪資（查勞保明細）</label>
+                    <div className="flex items-center gap-2">
+                      <span className="text-gray-400 text-sm flex-shrink-0">$</span>
+                      <input type="text" inputMode="numeric" value={form.insuredSalary===0?'':form.insuredSalary} onChange={e=>updateForm('insuredSalary',e.target.value===''?0:Number(e.target.value.replace(/\D/g,'')))} placeholder="不填則以月薪計算" className="flex-1 min-w-0 px-2 py-1.5 border rounded text-sm"/>
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-xs text-gray-600 mb-1">就保年資（3年內需滿1年）</label>
+                    <select value={form.insuranceYears} onChange={e=>updateForm('insuranceYears',Number(e.target.value))} className="w-full px-2 py-1.5 border rounded text-sm">
+                      <option value={0}>未滿1年</option>
+                      <option value={1}>1年以上</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-xs text-gray-600 mb-1">扶養人數（無工作收入眷屬）</label>
+                    <select value={form.dependents} onChange={e=>updateForm('dependents',Number(e.target.value))} className="w-full px-2 py-1.5 border rounded text-sm">
+                      <option value={0}>0人</option>
+                      <option value={1}>1人（+10%）</option>
+                      <option value={2}>2人以上（+20%）</option>
+                    </select>
+                  </div>
+                  <div className="flex flex-wrap gap-4">
+                    <label className="flex items-center gap-1.5 text-xs">
+                      <input type="checkbox" checked={form.isOver45} onChange={e=>updateForm('isOver45',e.target.checked)} className="w-3.5 h-3.5"/>年滿45歲
+                    </label>
+                    <label className="flex items-center gap-1.5 text-xs">
+                      <input type="checkbox" checked={form.hasDisability} onChange={e=>updateForm('hasDisability',e.target.checked)} className="w-3.5 h-3.5"/>身心障礙
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </Card>
+      {form.isInvoluntary && <Warn><strong>非自願離職注意：</strong>確認離職證明代碼符合勞基法§11或§14</Warn>}
+      <div className="flex gap-3">
+        <Btn onClick={()=>setStage('leave-date')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 上一步</Btn>
+        <Btn onClick={()=>{doCalc(form.joinDate,dateMode==='known'?form.leaveDate:form.noticeDate,dateMode==='known');setStage('result');}}>計算 <ChevronRight className="w-4 h-4"/></Btn>
+      </div>
+      <Footer/>
+    </Page>
+  );
 
-  if(stage==='result') return <Page><Progress n={4} t={10}/><Enc text="📊 了解規則，保護權益！"/><div className="bg-white rounded-xl p-4 shadow-lg space-y-4"><div className="text-center"><div className="text-xs text-gray-500">年資</div><div className="text-3xl font-bold text-[#6B8CAE]">{calc.tenure.years} 年 {calc.tenure.months} 個月</div></div><div className="border-t pt-4 space-y-2"><div className="flex justify-between items-center bg-[#6B8CAE]/5 rounded-xl p-3"><span className="text-sm">法定預告期</span><span className="text-2xl font-bold text-[#6B8CAE]">{calc.noticeRequired===0?'不需預告':`${calc.noticeRequired} 天`}</span></div>{dateMode==='known'&&calc.noticeRequired>0&&<><div className="flex justify-between items-center bg-[#FFB6A3]/10 rounded-xl p-3"><span className="text-sm">⚠️ 最晚提離職</span><span className="text-xl font-bold text-[#e07c5c]">{new Date(calc.deadlineToResign).toLocaleDateString('zh-TW')}</span></div><div className="flex justify-between items-center bg-[#6B8CAE]/5 rounded-xl p-3"><span className="text-sm">最後上班日</span><span className="text-xl font-bold text-[#6B8CAE]">{new Date(form.leaveDate).toLocaleDateString('zh-TW')}</span></div></>}{dateMode==='unknown'&&<><div className="flex justify-between items-center bg-[#6B8CAE]/5 rounded-xl p-3"><span className="text-sm">提離職日</span><span className="text-xl font-bold text-[#6B8CAE]">{new Date(form.noticeDate||new Date()).toLocaleDateString('zh-TW')}</span></div>{calc.noticeRequired>0&&<div className="flex justify-between items-center bg-[#FFB6A3]/10 rounded-xl p-3"><span className="text-sm">📅 最早離職日</span><span className="text-xl font-bold text-[#e07c5c]">{new Date(calc.earliestLeaveDate).toLocaleDateString('zh-TW')}</span></div>}</>}</div>{calc.noticeRequired>0&&<div className="border-t pt-4"><div className="flex justify-between items-center bg-blue-50 rounded-xl p-3"><div><span className="text-sm font-medium">🔍 謀職假</span><p className="text-xs text-gray-500">預告期每週2日有薪</p></div><span className="text-xl font-bold text-blue-600">{calc.jobSearchLeave} 天</span></div></div>}<div className="border-t pt-4 space-y-2"><h4 className="font-medium text-sm text-gray-700">🏖️ 特休結算</h4><div className="grid grid-cols-2 gap-2 text-sm"><div className="bg-gray-50 rounded-lg p-2"><div className="text-gray-500 text-xs">應有</div><div className="font-bold text-[#6B8CAE]">{calc.annualLeave} 天</div></div><div className="bg-gray-50 rounded-lg p-2"><div className="text-gray-500 text-xs">已用</div><div className="font-bold">{form.usedAnnualLeave} 天</div></div><div className="bg-green-50 rounded-lg p-2"><div className="text-gray-500 text-xs">剩餘</div><div className="font-bold text-green-600">{calc.remainingLeave} 天</div></div>{form.monthlySalary>0&&<div className="bg-green-50 rounded-lg p-2"><div className="text-gray-500 text-xs">折算</div><div className="font-bold text-green-600">${Math.round(calc.leaveCompensation).toLocaleString()}</div></div>}</div></div>{form.isInvoluntary&&form.monthlySalary>0&&<div className="border-t pt-4 space-y-2"><h4 className="font-medium text-sm text-gray-700">💰 資遣費</h4><div className="grid grid-cols-2 gap-2 text-sm"><div className="bg-amber-50 rounded-lg p-2"><div className="text-gray-500 text-xs">預告工資</div><div className="font-bold text-amber-600">${Math.round(calc.noticeWage).toLocaleString()}</div></div><div className="bg-amber-50 rounded-lg p-2"><div className="text-gray-500 text-xs">資遣費</div><div className="font-bold text-amber-600">${Math.round(calc.severancePay).toLocaleString()}</div></div></div></div>}</div><Legal>預告期：未滿3月不需、3月~1年10天、1~3年20天、3年以上30天</Legal><div className="flex gap-3"><Btn onClick={()=>setStage('salary-info')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 上一步</Btn><Btn onClick={()=>setStage('menu')}>繼續 <ChevronRight className="w-4 h-4"/></Btn></div><Footer/></Page>;
+  if(stage==='result') return (
+    <Page>
+      <Progress n={4} t={10}/>
+      <Enc text="📊 了解規則，保護權益！"/>
+      <Card className="space-y-4">
+        <div className="text-center">
+          <div className="text-xs text-gray-500">年資</div>
+          <div className="text-3xl font-bold text-[#6B8CAE]">{calc.tenure.years} 年 {calc.tenure.months} 個月</div>
+        </div>
+        <div className="border-t pt-4 space-y-2">
+          <Row className="bg-[#6B8CAE]/5 rounded-xl p-3">
+            <span className="text-sm min-w-0">法定預告期</span>
+            <span className="text-xl sm:text-2xl font-bold text-[#6B8CAE] flex-shrink-0">{calc.noticeRequired===0?'不需預告':`${calc.noticeRequired} 天`}</span>
+          </Row>
+          {dateMode==='known' && calc.noticeRequired>0 && (
+            <>
+              <Row className="bg-[#FFB6A3]/10 rounded-xl p-3">
+                <span className="text-sm min-w-0">⚠️ 最晚提離職</span>
+                <span className="text-lg sm:text-xl font-bold text-[#e07c5c] flex-shrink-0">{new Date(calc.deadlineToResign).toLocaleDateString('zh-TW')}</span>
+              </Row>
+              <Row className="bg-[#6B8CAE]/5 rounded-xl p-3">
+                <span className="text-sm min-w-0">最後上班日</span>
+                <span className="text-lg sm:text-xl font-bold text-[#6B8CAE] flex-shrink-0">{new Date(form.leaveDate).toLocaleDateString('zh-TW')}</span>
+              </Row>
+            </>
+          )}
+          {dateMode==='unknown' && (
+            <>
+              <Row className="bg-[#6B8CAE]/5 rounded-xl p-3">
+                <span className="text-sm min-w-0">提離職日</span>
+                <span className="text-lg sm:text-xl font-bold text-[#6B8CAE] flex-shrink-0">{new Date(form.noticeDate||new Date()).toLocaleDateString('zh-TW')}</span>
+              </Row>
+              {calc.noticeRequired>0 && (
+                <Row className="bg-[#FFB6A3]/10 rounded-xl p-3">
+                  <span className="text-sm min-w-0">📅 最早離職日</span>
+                  <span className="text-lg sm:text-xl font-bold text-[#e07c5c] flex-shrink-0">{new Date(calc.earliestLeaveDate).toLocaleDateString('zh-TW')}</span>
+                </Row>
+              )}
+            </>
+          )}
+        </div>
+        {calc.noticeRequired>0 && (
+          <div className="border-t pt-4">
+            <Row className="bg-blue-50 rounded-xl p-3">
+              <div className="min-w-0">
+                <span className="text-sm font-medium">🔍 謀職假</span>
+                <p className="text-xs text-gray-500">預告期每週2日有薪</p>
+              </div>
+              <span className="text-xl font-bold text-blue-600 flex-shrink-0">{calc.jobSearchLeave} 天</span>
+            </Row>
+          </div>
+        )}
+        <div className="border-t pt-4 space-y-2">
+          <h4 className="font-medium text-sm text-gray-700">🏖️ 特休結算</h4>
+          <div className="grid grid-cols-2 gap-2 text-sm">
+            <div className="bg-gray-50 rounded-lg p-2">
+              <div className="text-gray-500 text-xs">應有</div>
+              <div className="font-bold text-[#6B8CAE]">{calc.annualLeave} 天</div>
+            </div>
+            <div className="bg-gray-50 rounded-lg p-2">
+              <div className="text-gray-500 text-xs">已用</div>
+              <div className="font-bold">{form.usedAnnualLeave} 天</div>
+            </div>
+            <div className="bg-green-50 rounded-lg p-2">
+              <div className="text-gray-500 text-xs">剩餘</div>
+              <div className="font-bold text-green-600">{calc.remainingLeave} 天</div>
+            </div>
+            {form.monthlySalary>0 && (
+              <div className="bg-green-50 rounded-lg p-2">
+                <div className="text-gray-500 text-xs">折算</div>
+                <div className="font-bold text-green-600 text-sm">${Math.round(calc.leaveCompensation).toLocaleString()}</div>
+              </div>
+            )}
+          </div>
+        </div>
+        {form.isInvoluntary && form.monthlySalary>0 && (
+          <div className="border-t pt-4 space-y-2">
+            <h4 className="font-medium text-sm text-gray-700">💰 資遣費</h4>
+            <div className="grid grid-cols-2 gap-2 text-sm">
+              <div className="bg-amber-50 rounded-lg p-2">
+                <div className="text-gray-500 text-xs">預告工資</div>
+                <div className="font-bold text-amber-600 text-sm">${Math.round(calc.noticeWage).toLocaleString()}</div>
+              </div>
+              <div className="bg-amber-50 rounded-lg p-2">
+                <div className="text-gray-500 text-xs">資遣費</div>
+                <div className="font-bold text-amber-600 text-sm">${Math.round(calc.severancePay).toLocaleString()}</div>
+              </div>
+            </div>
+          </div>
+        )}
+      </Card>
+      <Legal>預告期：未滿3月不需、3月~1年10天、1~3年20天、3年以上30天</Legal>
+      <div className="flex gap-3">
+        <Btn onClick={()=>setStage('salary-info')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 上一步</Btn>
+        <Btn onClick={()=>setStage('menu')}>繼續 <ChevronRight className="w-4 h-4"/></Btn>
+      </div>
+      <Footer/>
+    </Page>
+  );
 
-  if(stage==='menu') return <Page><Enc text="📋 選擇需要的功能"/><div className="space-y-3"><Menu icon={<FileIcon/>} title="離職信生成器" desc="正式/親切/簡潔三種風格" onClick={()=>setStage('letter-info')}/><Menu icon={<CopyIcon/>} title="Email範本" desc="主管、人資、同事、廠商、推薦信" onClick={()=>setStage('letter-result')}/><Menu icon={<CheckIcon/>} title="交接清單" desc="30項完整清單，可輸出Word/Excel" onClick={()=>setStage('checklist')} badge="可輸出"/><Menu icon={<CalcIcon/>} title="謀職假申請" desc="自動計算天數，產生申請範本" onClick={()=>setStage('job-search')}/><Menu icon={<ShieldIcon/>} title="法律權益" desc="特休、資遣費、勞健保、競業條款" onClick={()=>setStage('rights')} badge="重要"/><Menu icon={<AlertIcon/>} title="數位安全" desc="帳號換綁、作品集脫敏、足跡清除" onClick={()=>setStage('digital')}/></div><div className="flex gap-3 mt-4"><Btn onClick={()=>setStage('result')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 計算結果</Btn><Btn onClick={()=>setStage('complete')}>完成 🎉</Btn></div><Footer/></Page>;
+  if(stage==='menu') return (
+    <Page>
+      <Enc text="📋 選擇需要的功能"/>
+      <div className="space-y-3">
+        <Menu icon={<FileIcon/>} title="離職信生成器" desc="正式/親切/簡潔三種風格" onClick={()=>setStage('letter-info')}/>
+        <Menu icon={<CopyIcon/>} title="Email範本" desc="主管、人資、同事、廠商、推薦信" onClick={()=>setStage('letter-result')}/>
+        <Menu icon={<CheckIcon/>} title="交接清單" desc="30項完整清單，可輸出Word/Excel" onClick={()=>setStage('checklist')} badge="可輸出"/>
+        <Menu icon={<CalcIcon/>} title="謀職假申請" desc="自動計算天數，產生申請範本" onClick={()=>setStage('job-search')}/>
+        <Menu icon={<ShieldIcon/>} title="法律權益" desc="特休、資遣費、勞健保、競業條款" onClick={()=>setStage('rights')} badge="重要"/>
+        <Menu icon={<AlertIcon/>} title="數位安全" desc="帳號換綁、作品集脫敏、足跡清除" onClick={()=>setStage('digital')}/>
+      </div>
+      <div className="flex gap-3 mt-4">
+        <Btn onClick={()=>setStage('result')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 計算結果</Btn>
+        <Btn onClick={()=>setStage('complete')}>完成 🎉</Btn>
+      </div>
+      <Footer/>
+    </Page>
+  );
 
-  if(stage==='letter-info') { const reasons=[{id:'career',l:'職涯發展'},{id:'family',l:'家庭因素'},{id:'health',l:'健康因素'},{id:'study',l:'進修學習'},{id:'relocation',l:'搬遷通勤'},{id:'other',l:'其他'}]; const toggle=(id:string)=>setForm(p=>({...p,reasons:p.reasons.includes(id)?p.reasons.filter(r=>r!==id):[...p.reasons,id]})); return <Page><Progress n={5} t={10}/><Enc text="✍️ 填寫資訊生成離職信"/><div className="bg-white rounded-xl p-4 shadow-lg space-y-3"><p className="text-xs text-gray-500">皆為選填</p><div className="grid grid-cols-2 gap-2"><input placeholder="你的姓名" value={form.employeeName} onChange={e=>updateForm('employeeName',e.target.value)} className="px-3 py-2 border rounded-lg text-sm"/><input placeholder="主管稱呼" value={form.supervisorName} onChange={e=>updateForm('supervisorName',e.target.value)} className="px-3 py-2 border rounded-lg text-sm"/><input placeholder="公司名稱" value={form.company} onChange={e=>updateForm('company',e.target.value)} className="px-3 py-2 border rounded-lg text-sm"/><input placeholder="部門" value={form.department} onChange={e=>updateForm('department',e.target.value)} className="px-3 py-2 border rounded-lg text-sm"/><input placeholder="職稱" value={form.position} onChange={e=>updateForm('position',e.target.value)} className="col-span-2 px-3 py-2 border rounded-lg text-sm"/></div><div><label className="text-sm font-medium text-gray-700">離職原因（可複選）</label><div className="grid grid-cols-3 gap-1 mt-1">{reasons.map(r=><label key={r.id} className={`p-2 border rounded-lg text-xs cursor-pointer text-center ${form.reasons.includes(r.id)?'border-[#6B8CAE] bg-[#6B8CAE]/5':''}`}><input type="checkbox" checked={form.reasons.includes(r.id)} onChange={()=>toggle(r.id)} className="sr-only"/>{r.l}</label>)}</div>{form.reasons.includes('other')&&<input placeholder="說明其他原因" value={form.reasonOther} onChange={e=>updateForm('reasonOther',e.target.value)} className="w-full mt-2 px-3 py-2 border rounded-lg text-sm"/>}</div><div><label className="text-sm font-medium text-gray-700">語氣</label><div className="flex gap-2 mt-1">{(['formal','friendly','simple'] as const).map(t=><label key={t} className={`flex-1 py-2 text-center text-sm rounded-full cursor-pointer border ${form.tone===t?'bg-[#6B8CAE] text-white border-[#6B8CAE]':'border-gray-200'}`}><input type="radio" checked={form.tone===t} onChange={()=>updateForm('tone',t)} className="sr-only"/>{{formal:'正式',friendly:'親切',simple:'簡潔'}[t]}</label>)}</div></div><textarea placeholder="感謝的話（選填）" value={form.gratitude} onChange={e=>updateForm('gratitude',e.target.value)} rows={2} className="w-full px-3 py-2 border rounded-lg text-sm resize-none"/><label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={form.hasHandover} onChange={e=>updateForm('hasHandover',e.target.checked)}/>加入交接承諾</label></div><div className="flex gap-3"><Btn onClick={()=>setStage('menu')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 返回</Btn><Btn onClick={()=>setStage('letter-result')}>生成 <ChevronRight className="w-4 h-4"/></Btn></div><Footer/></Page>; }
+  if(stage==='letter-info') {
+    const reasons = [{id:'career',l:'職涯發展'},{id:'family',l:'家庭因素'},{id:'health',l:'健康因素'},{id:'study',l:'進修學習'},{id:'relocation',l:'搬遷通勤'},{id:'other',l:'其他'}];
+    const toggle = (id:string) => setForm(p=>({...p,reasons:p.reasons.includes(id)?p.reasons.filter(r=>r!==id):[...p.reasons,id]}));
+    return (
+      <Page>
+        <Progress n={5} t={10}/>
+        <Enc text="✍️ 填寫資訊生成離職信"/>
+        <Card className="space-y-3">
+          <p className="text-xs text-gray-500">皆為選填</p>
+          <div className="grid grid-cols-2 gap-2">
+            <input placeholder="你的姓名" value={form.employeeName} onChange={e=>updateForm('employeeName',e.target.value)} className="px-3 py-2 border rounded-lg text-sm min-w-0"/>
+            <input placeholder="主管稱呼" value={form.supervisorName} onChange={e=>updateForm('supervisorName',e.target.value)} className="px-3 py-2 border rounded-lg text-sm min-w-0"/>
+            <input placeholder="公司名稱" value={form.company} onChange={e=>updateForm('company',e.target.value)} className="px-3 py-2 border rounded-lg text-sm min-w-0"/>
+            <input placeholder="部門" value={form.department} onChange={e=>updateForm('department',e.target.value)} className="px-3 py-2 border rounded-lg text-sm min-w-0"/>
+            <input placeholder="職稱" value={form.position} onChange={e=>updateForm('position',e.target.value)} className="col-span-2 px-3 py-2 border rounded-lg text-sm"/>
+          </div>
+          <div>
+            <label className="text-sm font-medium text-gray-700">離職原因（可複選）</label>
+            <div className="grid grid-cols-3 gap-1 mt-1">
+              {reasons.map(r => (
+                <label key={r.id} className={`p-2 border rounded-lg text-xs cursor-pointer text-center ${form.reasons.includes(r.id)?'border-[#6B8CAE] bg-[#6B8CAE]/5':''}`}>
+                  <input type="checkbox" checked={form.reasons.includes(r.id)} onChange={()=>toggle(r.id)} className="sr-only"/>{r.l}
+                </label>
+              ))}
+            </div>
+            {form.reasons.includes('other') && <input placeholder="說明其他原因" value={form.reasonOther} onChange={e=>updateForm('reasonOther',e.target.value)} className="w-full mt-2 px-3 py-2 border rounded-lg text-sm"/>}
+          </div>
+          <div>
+            <label className="text-sm font-medium text-gray-700">語氣</label>
+            <div className="flex gap-2 mt-1">
+              {(['formal','friendly','simple'] as const).map(t => (
+                <label key={t} className={`flex-1 py-2 text-center text-sm rounded-full cursor-pointer border ${form.tone===t?'bg-[#6B8CAE] text-white border-[#6B8CAE]':'border-gray-200'}`}>
+                  <input type="radio" checked={form.tone===t} onChange={()=>updateForm('tone',t)} className="sr-only"/>
+                  {{formal:'正式',friendly:'親切',simple:'簡潔'}[t]}
+                </label>
+              ))}
+            </div>
+          </div>
+          <textarea placeholder="感謝的話（選填）" value={form.gratitude} onChange={e=>updateForm('gratitude',e.target.value)} rows={2} className="w-full px-3 py-2 border rounded-lg text-sm resize-none"/>
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" checked={form.hasHandover} onChange={e=>updateForm('hasHandover',e.target.checked)} className="flex-shrink-0"/>加入交接承諾
+          </label>
+        </Card>
+        <div className="flex gap-3">
+          <Btn onClick={()=>setStage('menu')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 返回</Btn>
+          <Btn onClick={()=>setStage('letter-result')}>生成 <ChevronRight className="w-4 h-4"/></Btn>
+        </div>
+        <Footer/>
+      </Page>
+    );
+  }
 
-  if(stage==='letter-result') { const letter=genLetter(); return <Page><Progress n={6} t={10}/><Enc text="📝 離職文件準備好了！"/><div className="bg-white rounded-xl p-4 shadow-lg"><div className="flex justify-between items-center mb-2"><h3 className="font-bold text-gray-800">離職信</h3><CopyBtn text={letter} id="letter" copiedId={copiedId} onCopy={copy}/></div><pre className="whitespace-pre-wrap text-sm text-gray-700 bg-gray-50 rounded-lg p-3 font-sans max-h-48 overflow-y-auto">{letter}</pre></div><div className="bg-white rounded-xl p-4 shadow-lg space-y-3"><h3 className="font-bold text-gray-800">Email範本</h3>{[{t:'📧 約主管面談',c:genSupervisor(),id:'s'},{t:'📧 通知人資',c:genHR(),id:'h'},{t:'📧 向同事道別',c:genColleague(),id:'c'},{t:'📧 通知廠商',c:genVendor(),id:'v'},{t:'🙏 請求推薦',c:genRef(),id:'ref'},{t:'💼 LinkedIn動態',c:genLinkedIn(),id:'li'}].map(e=><div key={e.id} className="border rounded-lg p-2"><div className="flex justify-between items-center mb-1"><span className="text-sm font-medium">{e.t}</span><CopyBtn text={e.c} id={e.id} copiedId={copiedId} onCopy={copy}/></div><pre className="whitespace-pre-wrap text-xs text-gray-600 bg-gray-50 rounded p-2 font-sans max-h-32 overflow-y-auto">{e.c}</pre></div>)}</div><div className="flex gap-3"><Btn onClick={()=>setStage('letter-info')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 修改</Btn><Btn onClick={()=>setStage('menu')}>返回 <ChevronRight className="w-4 h-4"/></Btn></div><Footer/></Page>; }
+  if(stage==='letter-result') {
+    const letter = genLetter();
+    return (
+      <Page>
+        <Progress n={6} t={10}/>
+        <Enc text="📝 離職文件準備好了！"/>
+        <Card>
+          <Row className="mb-2">
+            <h3 className="font-bold text-gray-800 min-w-0">離職信</h3>
+            <CopyBtn text={letter} id="letter" copiedId={copiedId} onCopy={copy}/>
+          </Row>
+          <pre className="whitespace-pre-wrap text-sm text-gray-700 bg-gray-50 rounded-lg p-3 font-sans max-h-48 overflow-y-auto overflow-x-hidden">{letter}</pre>
+        </Card>
+        <Card className="space-y-3">
+          <h3 className="font-bold text-gray-800">Email範本</h3>
+          {[
+            {t:'📧 約主管面談',c:genSupervisor(),id:'s'},
+            {t:'📧 通知人資',c:genHR(),id:'h'},
+            {t:'📧 向同事道別',c:genColleague(),id:'c'},
+            {t:'📧 通知廠商',c:genVendor(),id:'v'},
+            {t:'🙏 請求推薦',c:genRef(),id:'ref'},
+            {t:'💼 LinkedIn動態',c:genLinkedIn(),id:'li'}
+          ].map(e => (
+            <div key={e.id} className="border rounded-lg p-2 overflow-hidden">
+              <Row className="mb-1">
+                <span className="text-sm font-medium min-w-0 truncate">{e.t}</span>
+                <CopyBtn text={e.c} id={e.id} copiedId={copiedId} onCopy={copy}/>
+              </Row>
+              <pre className="whitespace-pre-wrap text-xs text-gray-600 bg-gray-50 rounded p-2 font-sans max-h-32 overflow-y-auto overflow-x-hidden">{e.c}</pre>
+            </div>
+          ))}
+        </Card>
+        <div className="flex gap-3">
+          <Btn onClick={()=>setStage('letter-info')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 修改</Btn>
+          <Btn onClick={()=>setStage('menu')}>返回 <ChevronRight className="w-4 h-4"/></Btn>
+        </div>
+        <Footer/>
+      </Page>
+    );
+  }
 
-  if(stage==='job-search') { const req=genJobSearch(); return <Page><Enc text="🔍 謀職假是你的法定權利！"/><div className="bg-white rounded-xl p-4 shadow-lg space-y-4"><div className="flex justify-between items-center"><div><h3 className="font-bold text-gray-800">謀職假天數</h3><p className="text-xs text-gray-500">預告期每週2日有薪</p></div><span className="text-3xl font-bold text-[#6B8CAE]">{calc.jobSearchLeave} 天</span></div><div><div className="flex justify-between items-center mb-2"><span className="text-sm font-medium">申請單範本</span><CopyBtn text={req} id="jsl" copiedId={copiedId} onCopy={copy}/></div><pre className="whitespace-pre-wrap text-xs text-gray-700 bg-gray-50 rounded-lg p-3 font-sans">{req}</pre></div></div><Legal>《勞基法》§16-2：預告期間每週可請2日有薪假外出謀職</Legal><div className="flex gap-3"><Btn onClick={()=>setStage('menu')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 返回</Btn></div><Footer/></Page>; }
+  if(stage==='job-search') {
+    const req = genJobSearch();
+    return (
+      <Page>
+        <Enc text="🔍 謀職假是你的法定權利！"/>
+        <Card className="space-y-4">
+          <Row>
+            <div className="min-w-0">
+              <h3 className="font-bold text-gray-800">謀職假天數</h3>
+              <p className="text-xs text-gray-500">預告期每週2日有薪</p>
+            </div>
+            <span className="text-3xl font-bold text-[#6B8CAE] flex-shrink-0">{calc.jobSearchLeave} 天</span>
+          </Row>
+          <div>
+            <Row className="mb-2">
+              <span className="text-sm font-medium min-w-0">申請單範本</span>
+              <CopyBtn text={req} id="jsl" copiedId={copiedId} onCopy={copy}/>
+            </Row>
+            <pre className="whitespace-pre-wrap text-xs text-gray-700 bg-gray-50 rounded-lg p-3 font-sans overflow-x-hidden">{req}</pre>
+          </div>
+        </Card>
+        <Legal>《勞基法》§16-2：預告期間每週可請2日有薪假外出謀職</Legal>
+        <div className="flex gap-3">
+          <Btn onClick={()=>setStage('menu')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 返回</Btn>
+        </div>
+        <Footer/>
+      </Page>
+    );
+  }
 
-  if(stage==='checklist') { const cats=['法律權益','工作交接','數位安全','物品歸還','人際關係']; const toggle=(id:string)=>setChecklist(p=>p.map(i=>i.id===id?{...i,checked:!i.checked}:i)); const done=checklist.filter(i=>i.checked).length; const unchecked=checklist.filter(i=>!i.checked); return <Page><Progress n={7} t={10}/><Enc text="✅ 確保不遺漏！"/><div className="bg-white rounded-xl p-4 shadow-lg"><div className="flex justify-between items-center mb-2"><h3 className="font-bold text-gray-800">離職交接清單</h3><span className="text-sm text-[#6B8CAE]">{done}/{checklist.length}</span></div><div className="w-full h-2 bg-gray-200 rounded-full mb-4 overflow-hidden"><div className="h-full bg-gradient-to-r from-[#6B8CAE] to-[#FFD97D]" style={{width:`${(done/checklist.length)*100}%`}}/></div><div className="space-y-4 max-h-80 overflow-y-auto">{cats.map(cat=><div key={cat}><h4 className="text-xs font-bold text-[#6B8CAE] mb-2 sticky top-0 bg-white py-1">{cat}</h4><div className="space-y-1">{checklist.filter(i=>i.category===cat).map(i=><label key={i.id} className={`flex items-start gap-2 p-2 rounded-lg cursor-pointer ${i.checked?'bg-green-50':'hover:bg-gray-50'} ${i.priority==='must'?'border-l-2 border-red-400':i.priority==='should'?'border-l-2 border-amber-400':''}`}><input type="checkbox" checked={i.checked} onChange={()=>toggle(i.id)} className="w-4 h-4 mt-0.5 flex-shrink-0"/><div className="flex-1"><span className={`text-sm ${i.checked?'text-gray-400 line-through':''}`}>{i.text}</span>{i.note&&<p className="text-xs text-gray-400 mt-0.5">💡 {i.note}</p>}</div></label>)}</div></div>)}</div></div><div className="bg-white rounded-xl p-4 shadow-lg"><h3 className="font-bold text-gray-800 mb-3">📤 輸出未完成項目</h3><div className="grid grid-cols-2 gap-2"><button onClick={()=>exportCSV(unchecked)} className="flex items-center justify-center gap-2 p-3 border rounded-xl hover:bg-gray-50"><DownloadIcon className="w-4 h-4 text-green-600"/><span className="text-sm">Excel (CSV)</span></button><button onClick={()=>exportHTML(unchecked)} className="flex items-center justify-center gap-2 p-3 border rounded-xl hover:bg-gray-50"><DownloadIcon className="w-4 h-4 text-blue-600"/><span className="text-sm">Word (HTML)</span></button></div><p className="text-xs text-gray-500 mt-2 text-center">CSV可用Excel/Google Sheets開啟，HTML可用Word開啟</p></div><div className="flex gap-3"><Btn onClick={()=>setStage('menu')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 返回</Btn><Btn onClick={()=>setStage('rights')}>確認權益 <ChevronRight className="w-4 h-4"/></Btn></div><Footer/></Page>; }
+  if(stage==='checklist') {
+    const cats = ['法律權益','工作交接','數位安全','物品歸還','人際關係'];
+    const toggle = (id:string) => setChecklist(p=>p.map(i=>i.id===id?{...i,checked:!i.checked}:i));
+    const done = checklist.filter(i=>i.checked).length;
+    const unchecked = checklist.filter(i=>!i.checked);
+    return (
+      <Page>
+        <Progress n={7} t={10}/>
+        <Enc text="✅ 確保不遺漏！"/>
+        <Card>
+          <Row className="mb-2">
+            <h3 className="font-bold text-gray-800 min-w-0">離職交接清單</h3>
+            <span className="text-sm text-[#6B8CAE] flex-shrink-0">{done}/{checklist.length}</span>
+          </Row>
+          <div className="w-full h-2 bg-gray-200 rounded-full mb-4 overflow-hidden">
+            <div className="h-full bg-gradient-to-r from-[#6B8CAE] to-[#FFD97D]" style={{width:`${(done/checklist.length)*100}%`}}/>
+          </div>
+          <div className="space-y-4 max-h-80 overflow-y-auto">
+            {cats.map(cat => (
+              <div key={cat}>
+                <h4 className="text-xs font-bold text-[#6B8CAE] mb-2 sticky top-0 bg-white py-1">{cat}</h4>
+                <div className="space-y-1">
+                  {checklist.filter(i=>i.category===cat).map(i => (
+                    <label key={i.id} className={`flex items-start gap-2 p-2 rounded-lg cursor-pointer ${i.checked?'bg-green-50':'hover:bg-gray-50'} ${i.priority==='must'?'border-l-2 border-red-400':i.priority==='should'?'border-l-2 border-amber-400':''}`}>
+                      <input type="checkbox" checked={i.checked} onChange={()=>toggle(i.id)} className="w-4 h-4 mt-0.5 flex-shrink-0"/>
+                      <div className="flex-1 min-w-0">
+                        <span className={`text-sm ${i.checked?'text-gray-400 line-through':''}`}>{i.text}</span>
+                        {i.note && <p className="text-xs text-gray-400 mt-0.5 break-words">💡 {i.note}</p>}
+                      </div>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </Card>
+        <Card>
+          <h3 className="font-bold text-gray-800 mb-3">📤 輸出未完成項目</h3>
+          <div className="grid grid-cols-2 gap-2">
+            <button onClick={()=>exportCSV(unchecked)} className="flex items-center justify-center gap-2 p-3 border rounded-xl hover:bg-gray-50">
+              <DownloadIcon className="w-4 h-4 text-green-600 flex-shrink-0"/>
+              <span className="text-sm">Excel (CSV)</span>
+            </button>
+            <button onClick={()=>exportHTML(unchecked)} className="flex items-center justify-center gap-2 p-3 border rounded-xl hover:bg-gray-50">
+              <DownloadIcon className="w-4 h-4 text-blue-600 flex-shrink-0"/>
+              <span className="text-sm">Word (HTML)</span>
+            </button>
+          </div>
+          <p className="text-xs text-gray-500 mt-2 text-center">CSV可用Excel/Google Sheets開啟，HTML可用Word開啟</p>
+        </Card>
+        <div className="flex gap-3">
+          <Btn onClick={()=>setStage('menu')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 返回</Btn>
+          <Btn onClick={()=>setStage('rights')}>確認權益 <ChevronRight className="w-4 h-4"/></Btn>
+        </div>
+        <Footer/>
+      </Page>
+    );
+  }
 
+  if(stage==='rights') return (
+    <Page>
+      <Progress n={8} t={10}/>
+      <Enc text="💰 確認你的權益！"/>
+      <Card className="space-y-4">
+        <h3 className="font-bold text-gray-800">法律權益確認</h3>
+        <div className="bg-[#6B8CAE]/5 rounded-xl p-3">
+          <h4 className="font-medium text-sm mb-2">🏖️ 特休結算</h4>
+          <p className="text-sm">剩餘 <strong className="text-[#6B8CAE]">{calc.remainingLeave} 天</strong></p>
+          {form.monthlySalary>0 && <p className="text-sm">約 <strong className="text-green-600">${Math.round(calc.leaveCompensation).toLocaleString()}</strong></p>}
+          <p className="text-xs text-gray-500 mt-1">未休完應折算工資</p>
+        </div>
+        {form.isInvoluntary && (
+          <>
+            <div className="bg-amber-50 rounded-xl p-3 border-2 border-amber-200">
+              <h4 className="font-bold text-sm mb-2 text-amber-800">🏢 公司應給付</h4>
+              <div className="space-y-2">
+                {form.monthlySalary>0 ? (
+                  <>
+                    <Row><span className="text-sm min-w-0">資遣費</span><span className="font-bold text-amber-700 flex-shrink-0">${Math.round(calc.severancePay).toLocaleString()}</span></Row>
+                    <p className="text-xs text-gray-500">新制：年資×0.5個月薪，最高6個月</p>
+                    {calc.noticeWage>0 && (
+                      <>
+                        <Row className="border-t pt-2"><span className="text-sm min-w-0">預告工資</span><span className="font-bold text-amber-700 flex-shrink-0">${Math.round(calc.noticeWage).toLocaleString()}</span></Row>
+                        <p className="text-xs text-gray-500">公司未提前預告時須支付</p>
+                      </>
+                    )}
+                    <div className="border-t pt-2 mt-2">
+                      <Row><span className="text-sm font-medium min-w-0">小計</span><span className="font-bold text-amber-800 text-lg flex-shrink-0">${Math.round(calc.severancePay+calc.noticeWage+calc.leaveCompensation).toLocaleString()}</span></Row>
+                      <p className="text-xs text-gray-400">含特休折算 ${Math.round(calc.leaveCompensation).toLocaleString()}</p>
+                    </div>
+                  </>
+                ) : <p className="text-xs text-gray-500">請填入月薪以計算</p>}
+              </div>
+            </div>
+            {form.insuranceYears>=1 && (
+              <div className="bg-blue-50 rounded-xl p-3 border-2 border-blue-200">
+                <h4 className="font-bold text-sm mb-2 text-blue-800">🏛️ 政府失業補助</h4>
+                {(form.insuredSalary||form.monthlySalary)>0 ? (
+                  <div className="space-y-2">
+                    <Row><span className="text-sm min-w-0">失業給付（每月）</span><span className="font-bold text-blue-700 flex-shrink-0">${calc.unemploymentBenefit.toLocaleString()}</span></Row>
+                    <p className="text-xs text-gray-500">投保薪資60%{form.dependents>0?`+扶養加給${form.dependents>=2?'20':'10'}%`:''} × {calc.unemploymentMonths}個月</p>
+                    <Row><span className="text-sm min-w-0">最長可領</span><span className="font-bold text-blue-700 flex-shrink-0">{calc.unemploymentMonths} 個月</span></Row>
+                    <p className="text-xs text-gray-500">{form.isOver45||form.hasDisability?'45歲以上或身心障礙者':'一般勞工6個月'}</p>
+                    <div className="border-t pt-2 mt-2">
+                      <Row><span className="text-sm font-medium min-w-0">總計可領</span><span className="font-bold text-blue-800 text-lg flex-shrink-0">${(calc.unemploymentBenefit*calc.unemploymentMonths).toLocaleString()}</span></Row>
+                    </div>
+                    <div className="bg-white/50 rounded-lg p-2 mt-2">
+                      <p className="text-xs text-gray-600"><strong>📋 其他補助：</strong></p>
+                      <ul className="text-xs text-gray-500 mt-1 space-y-0.5">
+                        <li>• 職訓生活津貼：${calc.trainingAllowance.toLocaleString()}/月（參加職訓期間）</li>
+                        <li>• 提早就業獎勵：剩餘月份×50%一次發</li>
+                        <li>• 健保費全額補助：領失業給付期間</li>
+                      </ul>
+                    </div>
+                  </div>
+                ) : <p className="text-xs text-gray-500">請填入薪資以計算</p>}
+                <p className="text-xs text-blue-600 mt-2">⚠️ 需就保年資滿1年且向就業服務站辦理</p>
+              </div>
+            )}
+            {form.insuranceYears<1 && (
+              <div className="bg-gray-100 rounded-xl p-3">
+                <p className="text-xs text-gray-500">💡 就保年資未滿1年無法申請失業給付，但仍可申請資遣費</p>
+              </div>
+            )}
+          </>
+        )}
+        <div className="bg-red-50 rounded-xl p-3">
+          <h4 className="font-medium text-sm mb-2">📄 離職證明書</h4>
+          <ul className="text-xs text-gray-600 space-y-1">
+            <li>• 公司有義務開立</li>
+            <li>• 確認離職代碼正確（影響失業給付）</li>
+            <li>• 非自願離職需記載正確條款</li>
+          </ul>
+        </div>
+        <div className="bg-green-50 rounded-xl p-3">
+          <h4 className="font-medium text-sm mb-2">📋 服務證明書</h4>
+          <ul className="text-xs text-gray-600 space-y-1">
+            <li>• 依勞基法§19，僅記載到離職日、職位</li>
+            <li>• 不得有任何不利評語</li>
+          </ul>
+        </div>
+        <div className="bg-blue-50 rounded-xl p-3">
+          <h4 className="font-medium text-sm mb-2">🏥 勞健保</h4>
+          <ul className="text-xs text-gray-600 space-y-1">
+            <li>• 離職當日退保</li>
+            <li>• 空窗期可至區公所以第六類投保</li>
+            <li>• 或依附配偶/父母眷屬保</li>
+            {form.isInvoluntary && <li className="text-blue-600 font-medium">• 領失業給付期間健保費全額補助！</li>}
+          </ul>
+        </div>
+        <div className="bg-purple-50 rounded-xl p-3">
+          <h4 className="font-medium text-sm mb-2">🔐 競業禁止</h4>
+          <ul className="text-xs text-gray-600 space-y-1">
+            <li>• 檢查合約是否有「月補償金」</li>
+            <li>• 無補償金的競業條款多為無效</li>
+          </ul>
+        </div>
+        <div className="bg-gray-50 rounded-xl p-3">
+          <h4 className="font-medium text-sm mb-2">💵 勞退6%</h4>
+          <ul className="text-xs text-gray-600 space-y-1">
+            <li>• 至<a href="https://edesk.bli.gov.tw/na/" target="_blank" rel="noopener noreferrer" className="text-[#6B8CAE] underline">勞保局e化服務</a>查詢</li>
+            <li>• 確認公司每月有足額提繳</li>
+          </ul>
+        </div>
+      </Card>
+      <Legal>如有勞資爭議，可撥 <a href="tel:1955" className="font-bold">1955</a> 諮詢或向勞工局申請調解</Legal>
+      <div className="flex gap-3">
+        <Btn onClick={()=>setStage('menu')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 返回</Btn>
+        <Btn onClick={()=>setStage('digital')}>數位安全 <ChevronRight className="w-4 h-4"/></Btn>
+      </div>
+      <Footer/>
+    </Page>
+  );
 
-  if(stage==='rights') return <Page><Progress n={8} t={10}/><Enc text="💰 確認你的權益！"/><div className="bg-white rounded-xl p-4 shadow-lg space-y-4"><h3 className="font-bold text-gray-800">法律權益確認</h3><div className="bg-[#6B8CAE]/5 rounded-xl p-3"><h4 className="font-medium text-sm mb-2">🏖️ 特休結算</h4><p className="text-sm">剩餘 <strong className="text-[#6B8CAE]">{calc.remainingLeave} 天</strong></p>{form.monthlySalary>0&&<p className="text-sm">約 <strong className="text-green-600">${Math.round(calc.leaveCompensation).toLocaleString()}</strong></p>}<p className="text-xs text-gray-500 mt-1">未休完應折算工資</p></div>{form.isInvoluntary&&<><div className="bg-amber-50 rounded-xl p-3 border-2 border-amber-200"><h4 className="font-bold text-sm mb-2 text-amber-800">🏢 公司應給付</h4><div className="space-y-2">{form.monthlySalary>0?<><div className="flex justify-between items-center"><span className="text-sm">資遣費</span><span className="font-bold text-amber-700">${Math.round(calc.severancePay).toLocaleString()}</span></div><p className="text-xs text-gray-500">新制：年資×0.5個月薪，最高6個月</p>{calc.noticeWage>0&&<><div className="flex justify-between items-center border-t pt-2"><span className="text-sm">預告工資</span><span className="font-bold text-amber-700">${Math.round(calc.noticeWage).toLocaleString()}</span></div><p className="text-xs text-gray-500">公司未提前預告時須支付</p></>}<div className="border-t pt-2 mt-2"><div className="flex justify-between items-center"><span className="text-sm font-medium">小計</span><span className="font-bold text-amber-800 text-lg">${Math.round(calc.severancePay+calc.noticeWage+calc.leaveCompensation).toLocaleString()}</span></div><p className="text-xs text-gray-400">含特休折算 ${Math.round(calc.leaveCompensation).toLocaleString()}</p></div></>:<p className="text-xs text-gray-500">請填入月薪以計算</p>}</div></div>{form.insuranceYears>=1&&<div className="bg-blue-50 rounded-xl p-3 border-2 border-blue-200"><h4 className="font-bold text-sm mb-2 text-blue-800">🏛️ 政府失業補助</h4>{(form.insuredSalary||form.monthlySalary)>0?<div className="space-y-2"><div className="flex justify-between items-center"><span className="text-sm">失業給付（每月）</span><span className="font-bold text-blue-700">${calc.unemploymentBenefit.toLocaleString()}</span></div><p className="text-xs text-gray-500">投保薪資60%{form.dependents>0?`+扶養加給${form.dependents>=2?'20':'10'}%`:''} × {calc.unemploymentMonths}個月</p><div className="flex justify-between items-center"><span className="text-sm">最長可領</span><span className="font-bold text-blue-700">{calc.unemploymentMonths} 個月</span></div><p className="text-xs text-gray-500">{form.isOver45||form.hasDisability?'45歲以上或身心障礙者':'一般勞工6個月'}</p><div className="border-t pt-2 mt-2"><div className="flex justify-between items-center"><span className="text-sm font-medium">總計可領</span><span className="font-bold text-blue-800 text-lg">${(calc.unemploymentBenefit*calc.unemploymentMonths).toLocaleString()}</span></div></div><div className="bg-white/50 rounded-lg p-2 mt-2"><p className="text-xs text-gray-600"><strong>📋 其他補助：</strong></p><ul className="text-xs text-gray-500 mt-1 space-y-0.5"><li>• 職訓生活津貼：${calc.trainingAllowance.toLocaleString()}/月（參加職訓期間）</li><li>• 提早就業獎勵：剩餘月份×50%一次發</li><li>• 健保費全額補助：領失業給付期間</li></ul></div></div>:<p className="text-xs text-gray-500">請填入薪資以計算</p>}<p className="text-xs text-blue-600 mt-2">⚠️ 需就保年資滿1年且向就業服務站辦理</p></div>}{form.insuranceYears<1&&<div className="bg-gray-100 rounded-xl p-3"><p className="text-xs text-gray-500">💡 就保年資未滿1年無法申請失業給付，但仍可申請資遣費</p></div>}</>}<div className="bg-red-50 rounded-xl p-3"><h4 className="font-medium text-sm mb-2">📄 離職證明書</h4><ul className="text-xs text-gray-600 space-y-1"><li>• 公司有義務開立</li><li>• 確認離職代碼正確（影響失業給付）</li><li>• 非自願離職需記載正確條款</li></ul></div><div className="bg-green-50 rounded-xl p-3"><h4 className="font-medium text-sm mb-2">📋 服務證明書</h4><ul className="text-xs text-gray-600 space-y-1"><li>• 依勞基法§19，僅記載到離職日、職位</li><li>• 不得有任何不利評語</li></ul></div><div className="bg-blue-50 rounded-xl p-3"><h4 className="font-medium text-sm mb-2">🏥 勞健保</h4><ul className="text-xs text-gray-600 space-y-1"><li>• 離職當日退保</li><li>• 空窗期可至區公所以第六類投保</li><li>• 或依附配偶/父母眷屬保</li>{form.isInvoluntary&&<li className="text-blue-600 font-medium">• 領失業給付期間健保費全額補助！</li>}</ul></div><div className="bg-purple-50 rounded-xl p-3"><h4 className="font-medium text-sm mb-2">🔐 競業禁止</h4><ul className="text-xs text-gray-600 space-y-1"><li>• 檢查合約是否有「月補償金」</li><li>• 無補償金的競業條款多為無效</li></ul></div><div className="bg-gray-50 rounded-xl p-3"><h4 className="font-medium text-sm mb-2">💵 勞退6%</h4><ul className="text-xs text-gray-600 space-y-1"><li>• 至<a href="https://edesk.bli.gov.tw/na/" target="_blank" rel="noopener noreferrer" className="text-[#6B8CAE] underline">勞保局e化服務</a>查詢</li><li>• 確認公司每月有足額提繳</li></ul></div></div><Legal>如有勞資爭議，可撥 <a href="tel:1955" className="font-bold">1955</a> 諮詢或向勞工局申請調解</Legal><div className="flex gap-3"><Btn onClick={()=>setStage('menu')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 返回</Btn><Btn onClick={()=>setStage('digital')}>數位安全 <ChevronRight className="w-4 h-4"/></Btn></div><Footer/></Page>;
+  if(stage==='digital') return (
+    <Page>
+      <Progress n={9} t={10}/>
+      <Enc text="🔒 數位安全與體面轉身"/>
+      <Card className="space-y-4">
+        <h3 className="font-bold text-gray-800">數位安全檢查</h3>
+        <div className="bg-red-50 rounded-xl p-3">
+          <h4 className="font-medium text-sm mb-2 text-red-700">🚨 必做：公司信箱清理</h4>
+          <ul className="text-xs text-gray-600 space-y-1">
+            <li>1. 搜尋：面試、薪資、體檢、私人、offer</li>
+            <li>2. 刪除相關郵件</li>
+            <li>3. 清空垃圾桶（Hard Delete）</li>
+            <li>4. 清空「已刪除」與「草稿」</li>
+          </ul>
+        </div>
+        <div className="bg-amber-50 rounded-xl p-3">
+          <h4 className="font-medium text-sm mb-2">🔄 外部帳號換綁</h4>
+          <p className="text-xs text-gray-600 mb-2">公司信箱註冊的服務改綁個人信箱：</p>
+          <div className="flex flex-wrap gap-1">
+            {['Notion','Figma','Canva','Slack','Trello','GitHub'].map(s => <span key={s} className="text-xs bg-white px-2 py-1 rounded">{s}</span>)}
+          </div>
+        </div>
+        <div className="bg-blue-50 rounded-xl p-3">
+          <h4 className="font-medium text-sm mb-2">🧹 瀏覽器清理</h4>
+          <ul className="text-xs text-gray-600 space-y-1">
+            <li>• 登出 Chrome/Edge 帳號</li>
+            <li>• 清除已儲存密碼</li>
+            <li>• 清除信用卡資訊</li>
+            <li>• 清除瀏覽紀錄與 Cookies</li>
+          </ul>
+        </div>
+        <div className="bg-green-50 rounded-xl p-3">
+          <h4 className="font-medium text-sm mb-2">📁 方法論備份</h4>
+          <p className="text-xs text-gray-600">✓ 可保留：個人模板、SOP流程、學習筆記</p>
+          <p className="text-xs text-red-600 mt-1">✗ 不能帶：公司機密、客戶資料、專案原始檔</p>
+        </div>
+        <div className="bg-purple-50 rounded-xl p-3">
+          <h4 className="font-medium text-sm mb-2">🎨 作品集去識別化</h4>
+          <ul className="text-xs text-gray-600 space-y-1">
+            <li>• 數據轉百分比（營收100萬→成長30%）</li>
+            <li>• 模糊化Logo與品牌名稱</li>
+            <li>• 確認不違反NDA</li>
+          </ul>
+        </div>
+        <div className="bg-gray-50 rounded-xl p-3">
+          <h4 className="font-medium text-sm mb-2">📝 交接檔案命名</h4>
+          <code className="text-xs bg-white px-2 py-1 rounded block break-all">YYYYMMDD_專案名稱_交接版_v1.0</code>
+        </div>
+      </Card>
+      <Warn>帶走公司機密可能違反勞動契約及法規</Warn>
+      <div className="flex gap-3">
+        <Btn onClick={()=>setStage('menu')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 返回</Btn>
+        <Btn onClick={()=>setStage('complete')}>完成 🎉</Btn>
+      </div>
+      <Footer/>
+    </Page>
+  );
 
-  if(stage==='digital') return <Page><Progress n={9} t={10}/><Enc text="🔒 數位安全與體面轉身"/><div className="bg-white rounded-xl p-4 shadow-lg space-y-4"><h3 className="font-bold text-gray-800">數位安全檢查</h3><div className="bg-red-50 rounded-xl p-3"><h4 className="font-medium text-sm mb-2 text-red-700">🚨 必做：公司信箱清理</h4><ul className="text-xs text-gray-600 space-y-1"><li>1. 搜尋：面試、薪資、體檢、私人、offer</li><li>2. 刪除相關郵件</li><li>3. 清空垃圾桶（Hard Delete）</li><li>4. 清空「已刪除」與「草稿」</li></ul></div><div className="bg-amber-50 rounded-xl p-3"><h4 className="font-medium text-sm mb-2">🔄 外部帳號換綁</h4><p className="text-xs text-gray-600 mb-2">公司信箱註冊的服務改綁個人信箱：</p><div className="flex flex-wrap gap-1">{['Notion','Figma','Canva','Slack','Trello','GitHub'].map(s=><span key={s} className="text-xs bg-white px-2 py-1 rounded">{s}</span>)}</div></div><div className="bg-blue-50 rounded-xl p-3"><h4 className="font-medium text-sm mb-2">🧹 瀏覽器清理</h4><ul className="text-xs text-gray-600 space-y-1"><li>• 登出 Chrome/Edge 帳號</li><li>• 清除已儲存密碼</li><li>• 清除信用卡資訊</li><li>• 清除瀏覽紀錄與 Cookies</li></ul></div><div className="bg-green-50 rounded-xl p-3"><h4 className="font-medium text-sm mb-2">📁 方法論備份</h4><p className="text-xs text-gray-600">✓ 可保留：個人模板、SOP流程、學習筆記</p><p className="text-xs text-red-600 mt-1">✗ 不能帶：公司機密、客戶資料、專案原始檔</p></div><div className="bg-purple-50 rounded-xl p-3"><h4 className="font-medium text-sm mb-2">🎨 作品集去識別化</h4><ul className="text-xs text-gray-600 space-y-1"><li>• 數據轉百分比（營收100萬→成長30%）</li><li>• 模糊化Logo與品牌名稱</li><li>• 確認不違反NDA</li></ul></div><div className="bg-gray-50 rounded-xl p-3"><h4 className="font-medium text-sm mb-2">📝 交接檔案命名</h4><code className="text-xs bg-white px-2 py-1 rounded block">YYYYMMDD_專案名稱_交接版_v1.0</code></div></div><Warn>帶走公司機密可能違反勞動契約及法規</Warn><div className="flex gap-3"><Btn onClick={()=>setStage('menu')} variant="secondary"><ChevronLeft className="w-4 h-4"/> 返回</Btn><Btn onClick={()=>setStage('complete')}>完成 🎉</Btn></div><Footer/></Page>;
-
-  if(stage==='complete') return <Page><div className="text-center space-y-4 py-8"><div className="text-6xl">🎉</div><h1 className="text-2xl font-bold text-[#6B8CAE]">恭喜完成離職準備！</h1><p className="text-gray-600">祝新旅程順利</p><div className="bg-gradient-to-r from-[#FFD97D]/20 to-[#FFB6A3]/20 rounded-2xl p-4"><p className="text-[#6B8CAE]">每一個結束，都是新開始。<br/>勇敢追夢！✨</p></div><div className="bg-white rounded-xl p-4 shadow-md text-left"><h3 className="font-bold text-gray-800 mb-2">📋 最後確認</h3><ul className="space-y-1 text-sm text-gray-600"><li>☐ 離職證明書</li><li>☐ 服務證明書</li><li>☐ 薪資/特休已結算</li><li>☐ 勞健保轉出單</li><li>☐ 物品歸還/帶走</li><li>☐ 同事道別</li></ul></div><div className="bg-blue-50 rounded-xl p-4 text-left"><h3 className="font-bold text-gray-800 mb-2">💡 空窗期提醒</h3><ul className="space-y-1 text-xs text-gray-600"><li>• 健保可至區公所第六類加保</li><li>• 非自願離職可申請失業給付</li><li>• 建議休息1-2週再求職</li></ul></div><div className="flex flex-col gap-2"><button onClick={()=>setStage('menu')} className="w-full bg-[#6B8CAE] text-white py-3 rounded-full font-medium flex items-center justify-center gap-2"><HomeIcon className="w-4 h-4"/>返回功能</button><button onClick={reset} className="w-full bg-gray-100 text-gray-600 py-3 rounded-full font-medium">重新開始</button></div></div><Footer/></Page>;
+  if(stage==='complete') return (
+    <Page>
+      <div className="text-center space-y-4 py-8">
+        <div className="text-6xl">🎉</div>
+        <h1 className="text-2xl font-bold text-[#6B8CAE]">恭喜完成離職準備！</h1>
+        <p className="text-gray-600">祝新旅程順利</p>
+        <div className="bg-gradient-to-r from-[#FFD97D]/20 to-[#FFB6A3]/20 rounded-2xl p-4">
+          <p className="text-[#6B8CAE]">每一個結束，都是新開始。<br/>勇敢追夢！✨</p>
+        </div>
+        <Card className="text-left">
+          <h3 className="font-bold text-gray-800 mb-2">📋 最後確認</h3>
+          <ul className="space-y-1 text-sm text-gray-600">
+            <li>☐ 離職證明書</li>
+            <li>☐ 服務證明書</li>
+            <li>☐ 薪資/特休已結算</li>
+            <li>☐ 勞健保轉出單</li>
+            <li>☐ 物品歸還/帶走</li>
+            <li>☐ 同事道別</li>
+          </ul>
+        </Card>
+        <div className="bg-blue-50 rounded-xl p-4 text-left">
+          <h3 className="font-bold text-gray-800 mb-2">💡 空窗期提醒</h3>
+          <ul className="space-y-1 text-xs text-gray-600">
+            <li>• 健保可至區公所第六類加保</li>
+            <li>• 非自願離職可申請失業給付</li>
+            <li>• 建議休息1-2週再求職</li>
+          </ul>
+        </div>
+        <div className="flex flex-col gap-2">
+          <button onClick={()=>setStage('menu')} className="w-full bg-[#6B8CAE] text-white py-3 rounded-full font-medium flex items-center justify-center gap-2">
+            <HomeIcon className="w-4 h-4"/>返回功能
+          </button>
+          <button onClick={reset} className="w-full bg-gray-100 text-gray-600 py-3 rounded-full font-medium">重新開始</button>
+        </div>
+      </div>
+      <Footer/>
+    </Page>
+  );
 
   return null;
 }
