@@ -1,33 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
+/* 源雲明體 Web Font */
+@font-face {
+    font-family: 'GenWanMin';
+    src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-L.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'GenWanMin';
+    src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-R.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'GenWanMin';
+    src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-M.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'GenWanMin';
+    src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-SB.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
-  width: 100%;
-  overflow-x: hidden;
+:root {
+  --bg-primary: #FFFCFA;
+  --bg-secondary: #FDF6F0;
+  --bg-card: #FFFFFF;
+  --text-primary: #3D3535;
+  --text-secondary: #6B5B5B;
+  --text-muted: #A09090;
+  --accent-primary: #D4A5A5;
+  --accent-secondary: #B8A9C9;
+  --accent-tertiary: #C9929A;
+  --border: rgba(212, 165, 165, 0.15);
+  --shadow: 0 4px 24px rgba(212, 165, 165, 0.12);
+  --shadow-hover: 0 12px 48px rgba(212, 165, 165, 0.2);
 }
 
 body {
-  font-family: 'Huninn', 'Noto Sans TC', sans-serif;
-  background: #FFF9F0;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'GenWanMin', serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
-h1, h2, h3, h4, h5, h6 {
+.font-serif {
+  font-family: 'GenWanMin', serif;
+}
+
+.font-sans {
   font-family: 'Noto Sans TC', sans-serif;
-  font-weight: 700;
-}
-
-#root {
-  min-height: 100vh;
-  width: 100%;
 }
