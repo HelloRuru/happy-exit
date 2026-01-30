@@ -18,7 +18,18 @@ const FileIcon = ({ className = "w-5 h-5" }: { className?: string }) => <svg vie
 const Privacy = () => <div className="flex items-center justify-center gap-2 text-xs text-gray-500 py-2"><LockIcon className="w-3 h-3"/><span>資料僅存在你的瀏覽器</span></div>;
 const Legal = ({children}:{children:ReactNode}) => <div className="bg-amber-50 border-l-4 border-amber-400 p-3 rounded-r-xl overflow-hidden"><div className="flex items-start gap-2"><InfoIcon className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5"/><div className="text-xs text-amber-800 min-w-0">{children}</div></div></div>;
 const Warn = ({children}:{children:ReactNode}) => <div className="bg-red-50 border-l-4 border-red-400 p-3 rounded-r-xl overflow-hidden"><div className="flex items-start gap-2"><AlertIcon className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5"/><div className="text-xs text-red-800 min-w-0">{children}</div></div></div>;
-const Footer = () => <div className="mt-4 p-3 bg-white/80 rounded-xl border border-gray-100 text-center overflow-hidden"><p className="text-xs text-gray-600">⚠️ 依《勞基法》計算，僅供參考。諮詢請洽 <a href="tel:1955" className="text-[#6B8CAE] font-bold">1955</a></p><Privacy/><p className="text-xs text-gray-400 mt-2">© 2026 <a href="https://kaorutsai.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#6B8CAE]">Kaoru Tsai</a>. All Rights Reserved.</p></div>;
+const Footer = () => {
+  const startYear = 2026;
+  const currentYear = new Date().getFullYear();
+  const yearDisplay = currentYear > startYear ? `${startYear}–${currentYear}` : `${startYear}`;
+  return (
+    <div className="mt-4 p-3 bg-white/80 rounded-xl border border-gray-100 text-center overflow-hidden">
+      <p className="text-xs text-gray-600">⚠️ 依《勞基法》計算，僅供參考。諮詢請洽 <a href="tel:1955" className="text-[#6B8CAE] font-bold">1955</a></p>
+      <Privacy/>
+      <p className="text-xs text-gray-400 mt-2">© {yearDisplay} Kaoru Tsai. All Rights Reserved. | <a href="mailto:hello@helloruru.com" className="hover:text-[#6B8CAE]">hello@helloruru.com</a></p>
+    </div>
+  );
+};
 const Page = ({children}:{children:ReactNode}) => <div className="min-h-screen w-full bg-gradient-to-br from-[#FFF9F0] to-[#FFD97D]/10 p-3 sm:p-4 md:p-6 overflow-x-hidden"><div className="w-full max-w-2xl mx-auto space-y-4">{children}</div></div>;
 const Btn = ({onClick,disabled,variant='primary',children}:{onClick:()=>void;disabled?:boolean;variant?:string;children:ReactNode}) => <button onClick={onClick} disabled={disabled} className={`flex-1 py-3 px-4 rounded-full font-medium text-sm transition-all flex items-center justify-center gap-1 min-w-0 ${variant==='primary'?'bg-[#6B8CAE] text-white hover:bg-[#6B8CAE]/90 disabled:bg-gray-300 disabled:cursor-not-allowed':'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>{children}</button>;
 const Progress = ({n,t}:{n:number;t:number}) => <div className="flex items-center gap-2 mb-2"><div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden"><div className="h-full bg-[#6B8CAE] transition-all" style={{width:`${(n/t)*100}%`}}/></div><span className="text-xs text-gray-500 flex-shrink-0">{n}/{t}</span></div>;
