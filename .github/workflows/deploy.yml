@@ -1,4 +1,4 @@
-name: Deploy to lab.helloruru.com/happy-exit
+name: Deploy to both sites
 
 on:
   push:
@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build for GitHub Pages (lab.helloruru.com/happy-exit/)
         run: npm run build
 
       - name: Deploy to helloruru.github.io
@@ -33,3 +33,16 @@ jobs:
           publish_dir: ./dist
           destination_dir: happy-exit
           keep_files: true
+
+      - name: Build for Cloudflare Pages (newday.helloruru.com)
+        run: |
+          sed -i "s|base: '/happy-exit/'|base: '/'|" vite.config.js
+          npm run build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: happy-exit
+          directory: dist
