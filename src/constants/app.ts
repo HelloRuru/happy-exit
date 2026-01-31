@@ -1,5 +1,7 @@
 /**
  * App Constants
+ * =============
+ * 離職計算相關常數與預設資料
  */
 
 export const REASON_OPTIONS = [
@@ -12,8 +14,12 @@ export const REASON_OPTIONS = [
 ] as const;
 
 export const REASON_MAP: Record<string, string> = {
-  career: '職涯發展', family: '家庭因素', health: '健康因素',
-  study: '進修學習', relocation: '搬遷通勤', other: '個人因素',
+  career: '職涯發展',
+  family: '家庭因素',
+  health: '健康因素',
+  study: '進修學習',
+  relocation: '搬遷通勤',
+  other: '個人因素',
 };
 
 export const TONE_OPTIONS = [
@@ -56,8 +62,20 @@ export const DEFAULT_CHECKLIST = [
 ];
 
 export const CHECKLIST_CATEGORIES = ['法律權益', '工作交接', '數位安全', '物品歸還', '人際關係'] as const;
+
 export const EXTERNAL_SERVICES = ['Notion', 'Figma', 'Canva', 'Slack', 'Trello', 'GitHub'];
-export const DEPENDENT_OPTIONS = [{ value: 0, label: '0人' }, { value: 1, label: '1人（+10%）' }, { value: 2, label: '2人（+20%）' }, { value: 3, label: '3人（+20%）' }];
-export const INSURANCE_YEARS_OPTIONS = [{ value: 0, label: '未滿1年' }, { value: 1, label: '1年以上' }];
+
+export const DEPENDENT_OPTIONS = [
+  { value: 0, label: '0人' },
+  { value: 1, label: '1人（+10%）' },
+  { value: 2, label: '2人（+20%）' },
+  { value: 3, label: '3人（+20%）' },
+];
+
+export const INSURANCE_YEARS_OPTIONS = [
+  { value: 0, label: '未滿1年' },
+  { value: 1, label: '1年以上' },
+];
+
 export const TOTAL_PAGES = 10;
 export const STORAGE_KEY = 'resignV3';
