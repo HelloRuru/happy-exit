@@ -5,51 +5,60 @@
 /* Design System v1.4 Font Configuration */
 /* 標題: 獅尾四季春加糖 | 內文: 獅尾四季春 | 12px以下: Noto Sans TC */
 
+/* === 獅尾四季春加糖 (標題用) === */
 @font-face {
-  font-family: 'SweiSpringCJKtc-Sugar';
-  src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-R.woff2') format('woff2');
+  font-family: 'SweiSpringSugar';
+  src: url('https://cdn.jsdelivr.net/gh/max32002/swei-spring@1.068/WebFont/CJK%20TC/SweiSpringSugarCJKtc-Regular.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/max32002/swei-spring@1.068/WebFont/CJK%20TC/SweiSpringSugarCJKtc-Regular.woff') format('woff');
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SweiSpringCJKtc-Sugar';
-  src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-M.woff2') format('woff2');
+  font-family: 'SweiSpringSugar';
+  src: url('https://cdn.jsdelivr.net/gh/max32002/swei-spring@1.068/WebFont/CJK%20TC/SweiSpringSugarCJKtc-Medium.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/max32002/swei-spring@1.068/WebFont/CJK%20TC/SweiSpringSugarCJKtc-Medium.woff') format('woff');
   font-weight: 500;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SweiSpringCJKtc-Sugar';
-  src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-SB.woff2') format('woff2');
+  font-family: 'SweiSpringSugar';
+  src: url('https://cdn.jsdelivr.net/gh/max32002/swei-spring@1.068/WebFont/CJK%20TC/SweiSpringSugarCJKtc-Bold.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/max32002/swei-spring@1.068/WebFont/CJK%20TC/SweiSpringSugarCJKtc-Bold.woff') format('woff');
   font-weight: 700;
   font-display: swap;
 }
 
+/* === 獅尾四季春 (內文用) === */
 @font-face {
-  font-family: 'SweiSpringCJKtc';
-  src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-L.woff2') format('woff2');
+  font-family: 'SweiSpring';
+  src: url('https://cdn.jsdelivr.net/gh/max32002/swei-spring@1.068/WebFont/CJK%20TC/SweiSpringCJKtc-Light.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/max32002/swei-spring@1.068/WebFont/CJK%20TC/SweiSpringCJKtc-Light.woff') format('woff');
   font-weight: 300;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SweiSpringCJKtc';
-  src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-R.woff2') format('woff2');
+  font-family: 'SweiSpring';
+  src: url('https://cdn.jsdelivr.net/gh/max32002/swei-spring@1.068/WebFont/CJK%20TC/SweiSpringCJKtc-Regular.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/max32002/swei-spring@1.068/WebFont/CJK%20TC/SweiSpringCJKtc-Regular.woff') format('woff');
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SweiSpringCJKtc';
-  src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-M.woff2') format('woff2');
+  font-family: 'SweiSpring';
+  src: url('https://cdn.jsdelivr.net/gh/max32002/swei-spring@1.068/WebFont/CJK%20TC/SweiSpringCJKtc-Medium.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/max32002/swei-spring@1.068/WebFont/CJK%20TC/SweiSpringCJKtc-Medium.woff') format('woff');
   font-weight: 500;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SweiSpringCJKtc';
-  src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-SB.woff2') format('woff2');
+  font-family: 'SweiSpring';
+  src: url('https://cdn.jsdelivr.net/gh/max32002/swei-spring@1.068/WebFont/CJK%20TC/SweiSpringCJKtc-Bold.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/max32002/swei-spring@1.068/WebFont/CJK%20TC/SweiSpringCJKtc-Bold.woff') format('woff');
   font-weight: 700;
   font-display: swap;
 }
@@ -63,8 +72,8 @@
   --color-text-secondary: #6B5B5B;
   --radius-lg: 24px;
   --shadow-md: 0 4px 24px rgba(212, 165, 165, 0.12);
-  --font-heading: 'SweiSpringCJKtc-Sugar', 'Noto Sans TC', sans-serif;
-  --font-body: 'SweiSpringCJKtc', 'Noto Sans TC', sans-serif;
+  --font-heading: 'SweiSpringSugar', 'Noto Sans TC', sans-serif;
+  --font-body: 'SweiSpring', 'Noto Sans TC', sans-serif;
   --font-small: 'Noto Sans TC', sans-serif;
 }
 
