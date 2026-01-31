@@ -2,55 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 源雲明體 Web Font */
+/* Design System v1.4 Font Configuration */
+/* 標題: 獅尾四季春加糖 | 內文: 獅尾四季春 | 12px以下: Noto Sans TC */
+
 @font-face {
-    font-family: 'GenWanMin';
-    src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-L.woff2') format('woff2');
-    font-weight: 300;
-    font-display: swap;
+  font-family: 'SweiSpringCJKtc-Sugar';
+  src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-R.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
 }
+
 @font-face {
-    font-family: 'GenWanMin';
-    src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-R.woff2') format('woff2');
-    font-weight: 400;
-    font-display: swap;
+  font-family: 'SweiSpringCJKtc-Sugar';
+  src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-M.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
 }
+
 @font-face {
-    font-family: 'GenWanMin';
-    src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-M.woff2') format('woff2');
-    font-weight: 500;
-    font-display: swap;
+  font-family: 'SweiSpringCJKtc-Sugar';
+  src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-SB.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
 }
+
 @font-face {
-    font-family: 'GenWanMin';
-    src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-SB.woff2') format('woff2');
-    font-weight: 600;
-    font-display: swap;
+  font-family: 'SweiSpringCJKtc';
+  src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-L.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SweiSpringCJKtc';
+  src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-R.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SweiSpringCJKtc';
+  src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-M.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SweiSpringCJKtc';
+  src: url('https://cdn.jsdelivr.net/gh/nickhsine/genwan-font@master/webfont/GenWanMin2-SB.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
 }
 
 :root {
-  --bg-primary: #FFFCFA;
-  --bg-secondary: #FDF6F0;
-  --bg-card: #FFFFFF;
-  --text-primary: #3D3535;
-  --text-secondary: #6B5B5B;
-  --text-muted: #A09090;
-  --accent-primary: #D4A5A5;
-  --accent-secondary: #B8A9C9;
-  --accent-tertiary: #C9929A;
-  --border: rgba(212, 165, 165, 0.15);
-  --shadow: 0 4px 24px rgba(212, 165, 165, 0.12);
-  --shadow-hover: 0 12px 48px rgba(212, 165, 165, 0.2);
+  --color-primary: #D4A5A5;
+  --color-secondary: #B8A9C9;
+  --color-bg-primary: #FFFCFA;
+  --color-bg-secondary: #FDF6F0;
+  --color-text-primary: #3D3535;
+  --color-text-secondary: #6B5B5B;
+  --radius-lg: 24px;
+  --shadow-md: 0 4px 24px rgba(212, 165, 165, 0.12);
+  --font-heading: 'SweiSpringCJKtc-Sugar', 'Noto Sans TC', sans-serif;
+  --font-body: 'SweiSpringCJKtc', 'Noto Sans TC', sans-serif;
+  --font-small: 'Noto Sans TC', sans-serif;
 }
 
 body {
-  font-family: 'GenWanMin', serif;
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  font-family: var(--font-body);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }
 
-.font-serif {
-  font-family: 'GenWanMin', serif;
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+}
+
+.text-xs, .text-[10px], .text-[11px] {
+  font-family: var(--font-small);
 }
 
 .font-sans {
