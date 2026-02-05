@@ -5,6 +5,7 @@
 import { Page } from '../components/ui';
 import { Card, Footer, Progress, Enc, Btn } from '../components/ui';
 import { PenIcon, ChevronLeft, ChevronRight } from '../components/icons';
+import { ENCOURAGEMENT, BUTTON_TEXT, REASON_OPTIONS, TONE_OPTIONS } from '../constants';
 import type { StageName, FormData } from '../types';
 
 interface LetterInfoPageProps {
@@ -12,15 +13,6 @@ interface LetterInfoPageProps {
   updateForm: <K extends keyof FormData>(key: K, value: FormData[K]) => void;
   setStage: (stage: StageName) => void;
 }
-
-const reasons = [
-  { id: 'career', l: '職涯發展' },
-  { id: 'family', l: '家庭因素' },
-  { id: 'health', l: '健康因素' },
-  { id: 'study', l: '進修學習' },
-  { id: 'relocation', l: '搬遷通勤' },
-  { id: 'other', l: '其他' },
-];
 
 export const LetterInfoPage = ({ form, updateForm, setStage }: LetterInfoPageProps) => {
   const toggle = (id: string) => {
@@ -33,7 +25,7 @@ export const LetterInfoPage = ({ form, updateForm, setStage }: LetterInfoPagePro
   return (
     <Page>
       <Progress current={5} total={10} />
-      <Enc icon={<PenIcon className="w-5 h-5" />} text="填寫資訊生成離職信" />
+      <Enc icon={<PenIcon className="w-5 h-5" />} text={ENCOURAGEMENT.LETTER_INFO} />
       <Card className="space-y-3">
         <p className="text-xs text-gray-500">皆為選填</p>
         <div className="grid grid-cols-2 gap-2">
@@ -71,7 +63,7 @@ export const LetterInfoPage = ({ form, updateForm, setStage }: LetterInfoPagePro
         <div>
           <label className="text-sm font-medium text-gray-700">離職原因（可複選）</label>
           <div className="grid grid-cols-3 gap-1 mt-1">
-            {reasons.map((r) => (
+            {REASON_OPTIONS.map((r) => (
               <label
                 key={r.id}
                 className={`p-2 border rounded-3xl text-xs cursor-pointer text-center ${
@@ -84,7 +76,7 @@ export const LetterInfoPage = ({ form, updateForm, setStage }: LetterInfoPagePro
                   onChange={() => toggle(r.id)}
                   className="sr-only"
                 />
-                {r.l}
+                {r.label}
               </label>
             ))}
           </div>
@@ -100,20 +92,20 @@ export const LetterInfoPage = ({ form, updateForm, setStage }: LetterInfoPagePro
         <div>
           <label className="text-sm font-medium text-gray-700">語氣</label>
           <div className="flex gap-2 mt-1">
-            {(['formal', 'friendly', 'simple'] as const).map((t) => (
+            {TONE_OPTIONS.map((t) => (
               <label
-                key={t}
+                key={t.value}
                 className={`flex-1 py-2 text-center text-sm rounded-full cursor-pointer border min-h-[44px] flex items-center justify-center ${
-                  form.tone === t ? 'bg-[#D4A5A5] text-white border-[#D4A5A5]' : 'border-gray-200'
+                  form.tone === t.value ? 'bg-[#D4A5A5] text-white border-[#D4A5A5]' : 'border-gray-200'
                 }`}
               >
                 <input
                   type="radio"
-                  checked={form.tone === t}
-                  onChange={() => updateForm('tone', t)}
+                  checked={form.tone === t.value}
+                  onChange={() => updateForm('tone', t.value)}
                   className="sr-only"
                 />
-                {{ formal: '正式', friendly: '親切', simple: '簡潔' }[t]}
+                {t.label}
               </label>
             ))}
           </div>
@@ -137,10 +129,10 @@ export const LetterInfoPage = ({ form, updateForm, setStage }: LetterInfoPagePro
       </Card>
       <div className="flex gap-3">
         <Btn onClick={() => setStage('menu')} variant="secondary">
-          <ChevronLeft className="w-4 h-4" /> 返回
+          <ChevronLeft className="w-4 h-4" /> {BUTTON_TEXT.BACK}
         </Btn>
         <Btn onClick={() => setStage('letter-result')}>
-          生成 <ChevronRight className="w-4 h-4" />
+          {BUTTON_TEXT.GENERATE} <ChevronRight className="w-4 h-4" />
         </Btn>
       </div>
       <Footer />

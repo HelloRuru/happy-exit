@@ -6,6 +6,7 @@ import { Page } from '../components/ui';
 import { Card, Footer, Progress, Enc, Btn } from '../components/ui';
 import { CalendarIcon, ChevronLeft, ChevronRight, CheckIcon, InfoIcon } from '../components/icons';
 import { calcTenure } from '../utils/calculations';
+import { ENCOURAGEMENT, FORM_LABELS, BUTTON_TEXT, LEAVE_DATE_OPTIONS } from '../constants';
 import type { StageName, FormData, DateMode } from '../types';
 
 interface LeaveDatePageProps {
@@ -30,7 +31,7 @@ export const LeaveDatePage = ({
   return (
     <Page>
       <Progress current={2} total={10} />
-      <Enc icon={<CalendarIcon className="w-5 h-5" />} text="給自己充足的時間說再見。" />
+      <Enc icon={<CalendarIcon className="w-5 h-5" />} text={ENCOURAGEMENT.LEAVE_DATE} />
       <Card className="space-y-4">
         <div>
           <div className="text-sm text-gray-500">到職日期</div>
@@ -59,9 +60,9 @@ export const LeaveDatePage = ({
                 <div className="flex-1 min-w-0">
                   <div className="font-bold text-sm flex items-center gap-1">
                     <CheckIcon className="w-4 h-4 text-[#D4A5A5]" />
-                    是，已決定最後上班日
+                    {LEAVE_DATE_OPTIONS.KNOWN.label}
                   </div>
-                  <div className="text-xs text-gray-500">會計算最晚提離職日期</div>
+                  <div className="text-xs text-gray-500">{LEAVE_DATE_OPTIONS.KNOWN.hint}</div>
                 </div>
               </div>
             </label>
@@ -80,9 +81,9 @@ export const LeaveDatePage = ({
                 <div className="flex-1 min-w-0">
                   <div className="font-bold text-sm flex items-center gap-1">
                     <InfoIcon className="w-4 h-4 text-[#B8A9C9]" />
-                    還沒，想先了解預告期
+                    {LEAVE_DATE_OPTIONS.UNKNOWN.label}
                   </div>
-                  <div className="text-xs text-gray-500">會計算最快能離職的日期</div>
+                  <div className="text-xs text-gray-500">{LEAVE_DATE_OPTIONS.UNKNOWN.hint}</div>
                 </div>
               </div>
             </label>
@@ -90,7 +91,7 @@ export const LeaveDatePage = ({
         </div>
         {dateMode === 'known' && (
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">預計最後上班日</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">{FORM_LABELS.LEAVE_DATE}</label>
             <input
               type="date"
               value={form.leaveDate}
@@ -102,7 +103,7 @@ export const LeaveDatePage = ({
       </Card>
       <div className="flex gap-3">
         <Btn onClick={() => setStage('join-date')} variant="secondary">
-          <ChevronLeft className="w-4 h-4" /> 返回
+          <ChevronLeft className="w-4 h-4" /> {BUTTON_TEXT.BACK}
         </Btn>
         <Btn
           onClick={() => {
@@ -111,7 +112,7 @@ export const LeaveDatePage = ({
           }}
           disabled={dateMode === 'known' && !form.leaveDate}
         >
-          下一步 <ChevronRight className="w-4 h-4" />
+          {BUTTON_TEXT.NEXT} <ChevronRight className="w-4 h-4" />
         </Btn>
       </div>
       <Footer />

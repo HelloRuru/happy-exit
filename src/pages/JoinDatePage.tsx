@@ -5,6 +5,7 @@
 import { Page } from '../components/ui';
 import { Card, Footer, Progress, Legal, Enc, Btn } from '../components/ui';
 import { SproutIcon, ChevronLeft, ChevronRight } from '../components/icons';
+import { ENCOURAGEMENT, FORM_LABELS, BUTTON_TEXT } from '../constants';
 import type { StageName, FormData } from '../types';
 
 interface JoinDatePageProps {
@@ -16,9 +17,9 @@ interface JoinDatePageProps {
 export const JoinDatePage = ({ form, updateForm, setStage }: JoinDatePageProps) => (
   <Page>
     <Progress current={1} total={10} />
-    <Enc icon={<SproutIcon className="w-5 h-5" />} text="改變需要勇氣，你已經踏出第一步。" />
+    <Enc icon={<SproutIcon className="w-5 h-5" />} text={ENCOURAGEMENT.JOIN_DATE} />
     <Card>
-      <label className="block text-lg font-bold text-gray-800 mb-1">到職日期？</label>
+      <label className="block text-lg font-bold text-gray-800 mb-1">{FORM_LABELS.JOIN_DATE}？</label>
       <p className="text-xs text-gray-500 mb-3">大概日期即可</p>
       <input
         type="date"
@@ -33,7 +34,7 @@ export const JoinDatePage = ({ form, updateForm, setStage }: JoinDatePageProps) 
         <ChevronLeft className="w-4 h-4" />
       </Btn>
       <Btn onClick={() => setStage('leave-date')} disabled={!form.joinDate}>
-        下一步 <ChevronRight className="w-4 h-4" />
+        {BUTTON_TEXT.NEXT} <ChevronRight className="w-4 h-4" />
       </Btn>
     </div>
     <Footer />

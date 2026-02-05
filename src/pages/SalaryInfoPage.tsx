@@ -5,6 +5,7 @@
 import { Page } from '../components/ui';
 import { Card, Footer, Progress, Enc, Btn } from '../components/ui';
 import { CoinIcon, ShieldIcon, ChevronLeft, ChevronRight } from '../components/icons';
+import { ENCOURAGEMENT, FORM_LABELS, FORM_HINTS, FORM_PLACEHOLDERS, BUTTON_TEXT } from '../constants';
 import type { StageName, FormData, DateMode } from '../types';
 
 interface SalaryInfoPageProps {
@@ -18,32 +19,32 @@ interface SalaryInfoPageProps {
 export const SalaryInfoPage = ({ form, dateMode, updateForm, setStage, doCalc }: SalaryInfoPageProps) => (
   <Page>
     <Progress current={3} total={10} />
-    <Enc icon={<CoinIcon className="w-5 h-5" />} text="薪資資訊（選填）有助計算特休折算與失業補助" />
+    <Enc icon={<CoinIcon className="w-5 h-5" />} text={ENCOURAGEMENT.SALARY_INFO} />
     <Card className="space-y-4">
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">月薪（選填）</label>
+        <label className="block text-sm font-medium text-gray-700 mb-1">{FORM_LABELS.MONTHLY_SALARY}</label>
         <input
           type="number"
-          placeholder="例如 45000"
+          placeholder={FORM_PLACEHOLDERS.MONTHLY_SALARY}
           value={form.monthlySalary || ''}
           onChange={(e) => updateForm('monthlySalary', parseInt(e.target.value) || 0)}
           className="w-full px-3 py-2.5 border-2 border-[#D4A5A5]/30 rounded-3xl focus:outline-none focus:border-[#D4A5A5] text-base"
         />
-        <p className="text-xs text-gray-400 mt-1">用於計算特休折算、資遣費</p>
+        <p className="text-xs text-gray-400 mt-1">{FORM_HINTS.MONTHLY_SALARY}</p>
       </div>
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">勞保投保薪資（選填）</label>
+        <label className="block text-sm font-medium text-gray-700 mb-1">{FORM_LABELS.INSURED_SALARY}</label>
         <input
           type="number"
-          placeholder="通常≤月薪，例如 45800"
+          placeholder={FORM_PLACEHOLDERS.INSURED_SALARY}
           value={form.insuredSalary || ''}
           onChange={(e) => updateForm('insuredSalary', parseInt(e.target.value) || 0)}
           className="w-full px-3 py-2.5 border-2 border-[#D4A5A5]/30 rounded-3xl focus:outline-none focus:border-[#D4A5A5] text-base"
         />
-        <p className="text-xs text-gray-400 mt-1">未填則以月薪估算失業給付</p>
+        <p className="text-xs text-gray-400 mt-1">{FORM_HINTS.INSURED_SALARY}</p>
       </div>
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">今年已用特休天數</label>
+        <label className="block text-sm font-medium text-gray-700 mb-1">{FORM_LABELS.USED_ANNUAL_LEAVE}</label>
         <input
           type="number"
           placeholder="0"
@@ -61,8 +62,8 @@ export const SalaryInfoPage = ({ form, dateMode, updateForm, setStage, doCalc }:
             className="mt-1 flex-shrink-0"
           />
           <div className="min-w-0">
-            <span className="font-bold text-sm">非自願離職</span>
-            <p className="text-xs text-gray-500 break-words">公司資遣、裁員、歇業等（可領資遣費+失業給付）</p>
+            <span className="font-bold text-sm">{FORM_LABELS.INVOLUNTARY}</span>
+            <p className="text-xs text-gray-500 break-words">{FORM_HINTS.INVOLUNTARY_DESC}</p>
           </div>
         </label>
       </div>
@@ -120,7 +121,7 @@ export const SalaryInfoPage = ({ form, dateMode, updateForm, setStage, doCalc }:
     </Card>
     <div className="flex gap-3">
       <Btn onClick={() => setStage('leave-date')} variant="secondary">
-        <ChevronLeft className="w-4 h-4" /> 返回
+        <ChevronLeft className="w-4 h-4" /> {BUTTON_TEXT.BACK}
       </Btn>
       <Btn
         onClick={() => {
@@ -128,7 +129,7 @@ export const SalaryInfoPage = ({ form, dateMode, updateForm, setStage, doCalc }:
           setStage('result');
         }}
       >
-        計算結果 <ChevronRight className="w-4 h-4" />
+        {BUTTON_TEXT.CALCULATE} <ChevronRight className="w-4 h-4" />
       </Btn>
     </div>
     <Footer />

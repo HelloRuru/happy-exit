@@ -23,6 +23,7 @@ import {
   generateRecommendationRequest,
   generateLinkedInPost,
 } from '../utils/letters';
+import { ENCOURAGEMENT, BUTTON_TEXT } from '../constants';
 import type { StageName, FormData, CalcResult } from '../types';
 
 interface LetterResultPageProps {
@@ -57,7 +58,7 @@ export const LetterResultPage = ({
   return (
     <Page>
       <Progress current={6} total={10} />
-      <Enc icon={<FileIcon className="w-5 h-5" />} text="離職文件準備好了！" />
+      <Enc icon={<FileIcon className="w-5 h-5" />} text={ENCOURAGEMENT.LETTER_RESULT} />
       <Card>
         <Row className="mb-2">
           <h3 className="font-bold text-gray-800 min-w-0">離職信</h3>
@@ -86,10 +87,10 @@ export const LetterResultPage = ({
       </Card>
       <div className="flex gap-3">
         <Btn onClick={() => setStage('letter-info')} variant="secondary">
-          <ChevronLeft className="w-4 h-4" /> 修改
+          <ChevronLeft className="w-4 h-4" /> {BUTTON_TEXT.MODIFY}
         </Btn>
         <Btn onClick={() => setStage('menu')}>
-          返回 <ChevronRight className="w-4 h-4" />
+          {BUTTON_TEXT.BACK} <ChevronRight className="w-4 h-4" />
         </Btn>
       </div>
       <Footer />

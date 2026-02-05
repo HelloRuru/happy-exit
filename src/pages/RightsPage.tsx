@@ -18,6 +18,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from '../components/icons';
+import { ENCOURAGEMENT, BUTTON_TEXT, RIGHTS_SECTIONS } from '../constants';
 import type { StageName, FormData, CalcResult } from '../types';
 
 interface RightsPageProps {
@@ -29,14 +30,14 @@ interface RightsPageProps {
 export const RightsPage = ({ form, calc, setStage }: RightsPageProps) => (
   <Page>
     <Progress current={8} total={10} />
-    <Enc icon={<CoinIcon className="w-5 h-5" />} text="確認你的權益！" />
+    <Enc icon={<CoinIcon className="w-5 h-5" />} text={ENCOURAGEMENT.RIGHTS} />
     <Card className="space-y-4">
       <h3 className="font-bold text-gray-800">法律權益確認</h3>
 
       <div className="bg-[#D4A5A5]/5 rounded-3xl p-3">
         <h4 className="font-medium text-sm mb-2 flex items-center gap-1">
           <UmbrellaIcon className="w-4 h-4" />
-          特休結算
+          {RIGHTS_SECTIONS.ANNUAL_LEAVE}
         </h4>
         <p className="text-sm">
           剩餘 <strong className="text-[#D4A5A5]">{calc.remainingLeave} 天</strong>
@@ -54,7 +55,7 @@ export const RightsPage = ({ form, calc, setStage }: RightsPageProps) => (
           <div className="bg-amber-50 rounded-3xl p-3 border-2 border-amber-200">
             <h4 className="font-bold text-sm mb-2 text-amber-800 flex items-center gap-1">
               <BuildingIcon className="w-4 h-4" />
-              公司應給付
+              {RIGHTS_SECTIONS.COMPANY_PAYMENT}
             </h4>
             {form.monthlySalary > 0 ? (
               <>
@@ -95,7 +96,7 @@ export const RightsPage = ({ form, calc, setStage }: RightsPageProps) => (
             <div className="bg-blue-50 rounded-3xl p-3 border-2 border-blue-200">
               <h4 className="font-bold text-sm mb-2 text-blue-800 flex items-center gap-1">
                 <ShieldIcon className="w-4 h-4" />
-                政府失業補助
+                {RIGHTS_SECTIONS.GOVERNMENT_BENEFIT}
               </h4>
               {(form.insuredSalary || form.monthlySalary) > 0 ? (
                 <>
@@ -146,7 +147,7 @@ export const RightsPage = ({ form, calc, setStage }: RightsPageProps) => (
       <div className="bg-red-50 rounded-3xl p-3">
         <h4 className="font-medium text-sm mb-2 flex items-center gap-1">
           <FileIcon className="w-4 h-4" />
-          離職證明書
+          {RIGHTS_SECTIONS.CERTIFICATE}
         </h4>
         <ul className="text-xs text-gray-600 space-y-1">
           <li>• 公司有義務開立</li>
@@ -158,7 +159,7 @@ export const RightsPage = ({ form, calc, setStage }: RightsPageProps) => (
       <div className="bg-green-50 rounded-3xl p-3">
         <h4 className="font-medium text-sm mb-2 flex items-center gap-1">
           <ClipboardIcon className="w-4 h-4" />
-          服務證明書
+          {RIGHTS_SECTIONS.SERVICE_PROOF}
         </h4>
         <ul className="text-xs text-gray-600 space-y-1">
           <li>• 依勞基法§19，僅記載到離職日、職位</li>
@@ -169,7 +170,7 @@ export const RightsPage = ({ form, calc, setStage }: RightsPageProps) => (
       <div className="bg-blue-50 rounded-3xl p-3">
         <h4 className="font-medium text-sm mb-2 flex items-center gap-1">
           <ShieldIcon className="w-4 h-4" />
-          勞健保
+          {RIGHTS_SECTIONS.INSURANCE}
         </h4>
         <ul className="text-xs text-gray-600 space-y-1">
           <li>• 離職當日退保</li>
@@ -182,7 +183,7 @@ export const RightsPage = ({ form, calc, setStage }: RightsPageProps) => (
       <div className="bg-purple-50 rounded-3xl p-3">
         <h4 className="font-medium text-sm mb-2 flex items-center gap-1">
           <LockIcon className="w-4 h-4" />
-          競業禁止
+          {RIGHTS_SECTIONS.NON_COMPETE}
         </h4>
         <ul className="text-xs text-gray-600 space-y-1">
           <li>• 檢查合約是否有「月補償金」</li>
@@ -193,7 +194,7 @@ export const RightsPage = ({ form, calc, setStage }: RightsPageProps) => (
       <div className="bg-gray-50 rounded-3xl p-3">
         <h4 className="font-medium text-sm mb-2 flex items-center gap-1">
           <WalletIcon className="w-4 h-4" />
-          勞退6%
+          {RIGHTS_SECTIONS.PENSION}
         </h4>
         <ul className="text-xs text-gray-600 space-y-1">
           <li>
@@ -221,7 +222,7 @@ export const RightsPage = ({ form, calc, setStage }: RightsPageProps) => (
     </Legal>
     <div className="flex gap-3">
       <Btn onClick={() => setStage('menu')} variant="secondary">
-        <ChevronLeft className="w-4 h-4" /> 返回
+        <ChevronLeft className="w-4 h-4" /> {BUTTON_TEXT.BACK}
       </Btn>
       <Btn onClick={() => setStage('digital')}>
         數位安全 <ChevronRight className="w-4 h-4" />

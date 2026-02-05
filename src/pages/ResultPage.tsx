@@ -14,6 +14,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from '../components/icons';
+import { ENCOURAGEMENT, LEGAL_TEXT, BUTTON_TEXT } from '../constants';
 import type { StageName, FormData, CalcResult, DateMode } from '../types';
 
 interface ResultPageProps {
@@ -26,7 +27,7 @@ interface ResultPageProps {
 export const ResultPage = ({ form, calc, dateMode, setStage }: ResultPageProps) => (
   <Page>
     <Progress current={4} total={10} />
-    <Enc icon={<ChartIcon className="w-5 h-5" />} text="計算結果" />
+    <Enc icon={<ChartIcon className="w-5 h-5" />} text={ENCOURAGEMENT.RESULT} />
     <Card className="space-y-4">
       <Row>
         <span className="text-gray-600 min-w-0">年資</span>
@@ -149,13 +150,13 @@ export const ResultPage = ({ form, calc, dateMode, setStage }: ResultPageProps) 
         )}
       </Card>
     )}
-    <Legal>計算依《勞基法》與《就業保險法》，實際金額以公司與勞保局為準。</Legal>
+    <Legal>{LEGAL_TEXT.CALCULATION_NOTE}</Legal>
     <div className="flex gap-3">
       <Btn onClick={() => setStage('salary-info')} variant="secondary">
-        <ChevronLeft className="w-4 h-4" /> 返回
+        <ChevronLeft className="w-4 h-4" /> {BUTTON_TEXT.BACK}
       </Btn>
       <Btn onClick={() => setStage('menu')}>
-        功能選單 <ChevronRight className="w-4 h-4" />
+        {BUTTON_TEXT.MENU} <ChevronRight className="w-4 h-4" />
       </Btn>
     </div>
     <Footer />

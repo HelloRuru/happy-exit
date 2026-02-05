@@ -7,6 +7,7 @@ import { Card, Footer, Progress, Enc, Btn, Row } from '../components/ui';
 import { CheckIcon, DownloadIcon, ChevronLeft, ChevronRight } from '../components/icons';
 import { checklistCategories } from '../data/checklist';
 import { exportToCSV, exportToHTML } from '../utils/export';
+import { ENCOURAGEMENT, BUTTON_TEXT } from '../constants';
 import type { StageName, ChecklistItem } from '../types';
 
 interface ChecklistPageProps {
@@ -22,7 +23,7 @@ export const ChecklistPage = ({ checklist, toggleCheck, setStage }: ChecklistPag
   return (
     <Page>
       <Progress current={7} total={10} />
-      <Enc icon={<CheckIcon className="w-5 h-5" />} text="確保不遺漏！" />
+      <Enc icon={<CheckIcon className="w-5 h-5" />} text={ENCOURAGEMENT.CHECKLIST} />
       <Card>
         <Row className="mb-2">
           <h3 className="font-bold text-gray-800 min-w-0">離職交接清單</h3>
@@ -100,7 +101,7 @@ export const ChecklistPage = ({ checklist, toggleCheck, setStage }: ChecklistPag
       </Card>
       <div className="flex gap-3">
         <Btn onClick={() => setStage('menu')} variant="secondary">
-          <ChevronLeft className="w-4 h-4" /> 返回
+          <ChevronLeft className="w-4 h-4" /> {BUTTON_TEXT.BACK}
         </Btn>
         <Btn onClick={() => setStage('rights')}>
           確認權益 <ChevronRight className="w-4 h-4" />
