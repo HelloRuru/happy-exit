@@ -5,7 +5,6 @@
 import { Page } from '../components/ui';
 import { Card, Footer } from '../components/ui';
 import { PartyIcon, StarIcon, ClipboardIcon, InfoIcon, HomeIcon } from '../components/icons';
-import { COMPLETE_CONTENT } from '../constants';
 import type { StageName } from '../types';
 
 interface CompletePageProps {
