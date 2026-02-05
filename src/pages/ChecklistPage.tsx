@@ -2,6 +2,7 @@
  * 交接清單頁面
  */
 
+import { useMemo, useCallback } from 'react';
 import { Page } from '../components/ui';
 import { Card, Footer, Progress, Enc, Btn, Row } from '../components/ui';
 import { CheckIcon, DownloadIcon, ChevronLeft, ChevronRight } from '../components/icons';
@@ -17,8 +18,11 @@ interface ChecklistPageProps {
 }
 
 export const ChecklistPage = ({ checklist, toggleCheck, setStage }: ChecklistPageProps) => {
-  const done = checklist.filter((i) => i.checked).length;
-  const unchecked = checklist.filter((i) => !i.checked);
+  const done = useMemo(() => checklist.filter((i) => i.checked).length, [checklist]);
+  const unchecked = useMemo(() => checklist.filter((i) => !i.checked), [checklist]);
+
+  const handleExportCSV = useCallback(() => exportToCSV(unchecked), [unchecked]);
+  const handleExportHTML = useCallback(() => exportToHTML(unchecked), [unchecked]);
 
   return (
     <Page>
@@ -81,14 +85,14 @@ export const ChecklistPage = ({ checklist, toggleCheck, setStage }: ChecklistPag
         </h3>
         <div className="grid grid-cols-2 gap-2">
           <button
-            onClick={() => exportToCSV(unchecked)}
+            onClick={handleExportCSV}
             className="flex items-center justify-center gap-2 p-3 border rounded-3xl hover:bg-gray-50 min-h-[44px]"
           >
             <DownloadIcon className="w-4 h-4 text-green-600 flex-shrink-0" />
             <span className="text-sm">Excel (CSV)</span>
           </button>
           <button
-            onClick={() => exportToHTML(unchecked)}
+            onClick={handleExportHTML}
             className="flex items-center justify-center gap-2 p-3 border rounded-3xl hover:bg-gray-50 min-h-[44px]"
           >
             <DownloadIcon className="w-4 h-4 text-blue-600 flex-shrink-0" />

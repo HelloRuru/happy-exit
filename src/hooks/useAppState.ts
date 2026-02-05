@@ -1,7 +1,7 @@
 /**
  * App State Hook - 狀態管理
  */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import type { FormData, CalcResult, ChecklistItem, StageName, DateMode } from '../types';
 import { DEFAULT_CHECKLIST, STORAGE_KEY } from '../constants';
 import { performCalculation, getEmptyCalcResult } from '../utils/calculations';
@@ -10,7 +10,7 @@ export function useAppState() {
   const [stage, setStage] = useState<StageName>('welcome');
   const [dateMode, setDateMode] = useState<DateMode>('known');
   const [copiedId, setCopiedId] = useState<string | null>(null);
-  
+
   const [form, setForm] = useState<FormData>({
     joinDate: '', leaveDate: '', company: '', department: '', position: '',
     supervisorName: '', employeeName: '', reasons: [], reasonOther: '',
@@ -41,16 +41,34 @@ export function useAppState() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ stage, dateMode, form, calc, checklist }));
   }, [stage, dateMode, form, calc, checklist]);
 
-  const doCalc = () => setCalc(performCalculation(form, dateMode));
-  const copy = (text: string, id: string) => {
+  const doCalc = useCallback(() => {
+    setCalc(performCalculation(form, dateMode));
+  }, [form, dateMode]);
+
+  const copy = useCallback((text: string, id: string) => {
     navigator.clipboard.writeText(text);
     setCopiedId(id);
     setTimeout(() => setCopiedId(null), 2000);
-  };
-  const reset = () => { if (confirm('確定重新開始？')) { localStorage.removeItem(STORAGE_KEY); location.reload(); } };
-  const updateForm = <K extends keyof FormData>(key: K, value: FormData[K]) => setForm(prev => ({ ...prev, [key]: value }));
-  const toggleCheck = (id: string) => setChecklist(p => p.map(i => i.id === id ? { ...i, checked: !i.checked } : i));
-  const getLeaveDate = () => dateMode === 'known' ? form.leaveDate : (calc.earliestLeaveDate || new Date().toISOString().split('T')[0]);
+  }, []);
+
+  const reset = useCallback(() => {
+    if (confirm('確定重新開始？')) {
+      localStorage.removeItem(STORAGE_KEY);
+      location.reload();
+    }
+  }, []);
+
+  const updateForm = useCallback(<K extends keyof FormData>(key: K, value: FormData[K]) => {
+    setForm(prev => ({ ...prev, [key]: value }));
+  }, []);
+
+  const toggleCheck = useCallback((id: string) => {
+    setChecklist(p => p.map(i => i.id === id ? { ...i, checked: !i.checked } : i));
+  }, []);
+
+  const getLeaveDate = useCallback(() => {
+    return dateMode === 'known' ? form.leaveDate : (calc.earliestLeaveDate || new Date().toISOString().split('T')[0]);
+  }, [dateMode, form.leaveDate, calc.earliestLeaveDate]);
 
   return {
     stage, setStage, dateMode, setDateMode, copiedId, form, calc, checklist,

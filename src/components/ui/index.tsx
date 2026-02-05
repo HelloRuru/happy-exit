@@ -2,7 +2,7 @@
  * UI Components - Design System v1.4
  * 圓角: 24px | 主色: #D4A5A5 | 次色: #B8A9C9
  */
-import React, { ReactNode } from 'react';
+import React, { ReactNode, memo } from 'react';
 import { LockIcon, AlertIcon, InfoIcon, ChevronRight, CopyIcon, CheckIcon } from '../icons';
 
 export const Page: React.FC<{ children: ReactNode }> = ({ children }) => (
@@ -23,12 +23,12 @@ export const Btn: React.FC<{ onClick: () => void; disabled?: boolean; variant?: 
   <button onClick={onClick} disabled={disabled} className={`flex-1 py-3 px-4 rounded-3xl font-medium text-sm transition-all flex items-center justify-center gap-1 min-w-0 min-h-[44px] ${variant === 'primary' ? 'bg-[#D4A5A5] text-white hover:bg-[#D4A5A5]/90 disabled:bg-gray-300 disabled:cursor-not-allowed' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>{children}</button>
 );
 
-export const CopyBtn: React.FC<{ text: string; id: string; copiedId: string | null; onCopy: (text: string, id: string) => void }> = ({ text, id, copiedId, onCopy }) => (
+export const CopyBtn: React.FC<{ text: string; id: string; copiedId: string | null; onCopy: (text: string, id: string) => void }> = memo(({ text, id, copiedId, onCopy }) => (
   <button onClick={() => onCopy(text, id)} className="flex items-center gap-1 px-3 py-1.5 bg-[#D4A5A5] text-white rounded-3xl text-xs hover:bg-[#D4A5A5]/90 flex-shrink-0 whitespace-nowrap min-h-[44px]">
     {copiedId === id ? <CheckIcon className="w-3 h-3" /> : <CopyIcon className="w-3 h-3" />}
     {copiedId === id ? '已複製' : '複製'}
   </button>
-);
+));
 
 export const Progress: React.FC<{ current: number; total: number }> = ({ current, total }) => (
   <div className="flex items-center gap-2 mb-2">
@@ -61,7 +61,7 @@ export const Privacy: React.FC = () => (
   <div className="flex items-center justify-center gap-2 text-xs text-gray-500 py-2"><LockIcon className="w-3 h-3" /><span>資料僅存在你的瀏覽器</span></div>
 );
 
-export const Menu: React.FC<{ icon: ReactNode; title: string; desc: string; onClick: () => void; badge?: string }> = ({ icon, title, desc, onClick, badge }) => (
+export const Menu: React.FC<{ icon: ReactNode; title: string; desc: string; onClick: () => void; badge?: string }> = memo(({ icon, title, desc, onClick, badge }) => (
   <button onClick={onClick} className="w-full bg-white rounded-3xl p-4 shadow-sm hover:shadow-md transition-all text-left flex items-start gap-3 border border-gray-100 overflow-hidden min-h-[44px]">
     <div className="w-10 h-10 rounded-full bg-[#D4A5A5]/10 flex items-center justify-center text-[#D4A5A5] flex-shrink-0">{icon}</div>
     <div className="flex-1 min-w-0">
@@ -70,7 +70,7 @@ export const Menu: React.FC<{ icon: ReactNode; title: string; desc: string; onCl
     </div>
     <ChevronRight className="w-5 h-5 text-gray-400 flex-shrink-0" />
   </button>
-);
+));
 
 const getFooterYear = () => {
   const startYear = 2026;

@@ -2,6 +2,7 @@
  * 離職信資訊頁面
  */
 
+import { useCallback } from 'react';
 import { Page } from '../components/ui';
 import { Card, Footer, Progress, Enc, Btn } from '../components/ui';
 import { PenIcon, ChevronLeft, ChevronRight } from '../components/icons';
@@ -15,12 +16,12 @@ interface LetterInfoPageProps {
 }
 
 export const LetterInfoPage = ({ form, updateForm, setStage }: LetterInfoPageProps) => {
-  const toggle = (id: string) => {
+  const toggle = useCallback((id: string) => {
     const newReasons = form.reasons.includes(id)
       ? form.reasons.filter((r) => r !== id)
       : [...form.reasons, id];
     updateForm('reasons', newReasons);
-  };
+  }, [form.reasons, updateForm]);
 
   return (
     <Page>

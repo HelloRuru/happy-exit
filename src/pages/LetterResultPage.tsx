@@ -2,6 +2,7 @@
  * 離職信結果頁面
  */
 
+import { useMemo } from 'react';
 import { Page } from '../components/ui';
 import { Card, Footer, Progress, Enc, Btn, Row, CopyBtn } from '../components/ui';
 import {
@@ -44,16 +45,20 @@ export const LetterResultPage = ({
   setStage,
 }: LetterResultPageProps) => {
   const leaveDate = getLeaveDate();
-  const letter = generateResignationLetter(form, leaveDate);
 
-  const emails = [
+  const letter = useMemo(
+    () => generateResignationLetter(form, leaveDate),
+    [form, leaveDate]
+  );
+
+  const emails = useMemo(() => [
     { t: '約主管面談', c: generateSupervisorEmail(form), id: 's', icon: <BriefcaseIcon className="w-4 h-4" /> },
     { t: '通知人資', c: generateHREmail(form, leaveDate), id: 'h', icon: <BuildingIcon className="w-4 h-4" /> },
     { t: '向同事道別', c: generateColleagueEmail(form, calc, leaveDate), id: 'c', icon: <HeartIcon className="w-4 h-4" /> },
     { t: '通知廠商', c: generateVendorEmail(form, leaveDate), id: 'v', icon: <LinkIcon className="w-4 h-4" /> },
     { t: '請求推薦', c: generateRecommendationRequest(form), id: 'ref', icon: <ThumbsUpIcon className="w-4 h-4" /> },
     { t: 'LinkedIn動態', c: generateLinkedInPost(form, calc), id: 'li', icon: <BriefcaseIcon className="w-4 h-4" /> },
-  ];
+  ], [form, calc, leaveDate]);
 
   return (
     <Page>
