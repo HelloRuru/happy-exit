@@ -2,12 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design System v1.4 — 獅尾字體（全域子集化） */
+/* Design System v1.5 — 獅尾字體（全域子集化） */
 
 @font-face {
   font-family: 'Swei Spring';
   src: url('https://lab.helloruru.com/fonts/SweiSpring-Regular.woff2') format('woff2');
   font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Swei Spring';
+  src: url('https://lab.helloruru.com/fonts/SweiSpring-Medium.woff2') format('woff2');
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
