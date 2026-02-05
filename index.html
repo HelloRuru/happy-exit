@@ -1,9 +1,174 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant-TW">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>離職全能導航幫手</title>
+
+    <!-- Primary Meta Tags -->
+    <title>離職全能導航幫手 - 台灣勞工離職規劃工具</title>
+    <meta name="title" content="離職全能導航幫手 - 台灣勞工離職規劃工具" />
+    <meta name="description" content="免費線上離職規劃工具，提供勞基法權益計算、離職信範本、交接清單、資遣費試算，幫助台灣勞工順利離職。" />
+    <meta name="keywords" content="離職,離職信,離職信範本,預告期,特休結算,資遣費,勞基法,交接清單,謀職假,失業給付,台灣勞工" />
+    <meta name="author" content="Kaoru Tsai" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://newday.helloruru.com" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://newday.helloruru.com" />
+    <meta property="og:title" content="離職全能導航幫手 - 台灣勞工離職規劃工具" />
+    <meta property="og:description" content="免費線上離職規劃工具，提供勞基法權益計算、離職信範本、交接清單、資遣費試算，幫助台灣勞工順利離職。" />
+    <meta property="og:image" content="https://newday.helloruru.com/og-image.png" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:site_name" content="離職全能導航幫手" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://newday.helloruru.com" />
+    <meta name="twitter:title" content="離職全能導航幫手 - 台灣勞工離職規劃工具" />
+    <meta name="twitter:description" content="免費線上離職規劃工具，提供勞基法權益計算、離職信範本、交接清單、資遣費試算，幫助台灣勞工順利離職。" />
+    <meta name="twitter:image" content="https://newday.helloruru.com/og-image.png" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- JSON-LD Structured Data: WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "離職全能導航幫手",
+      "description": "免費線上離職規劃工具，提供勞基法權益計算、離職信範本、交接清單、資遣費試算，幫助台灣勞工順利離職。",
+      "url": "https://newday.helloruru.com",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Web",
+      "browserRequirements": "Requires JavaScript",
+      "inLanguage": "zh-TW",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "TWD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Kaoru Tsai",
+        "email": "hello@helloruru.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Hello Ruru",
+        "url": "https://helloruru.com"
+      },
+      "featureList": [
+        "預告期計算",
+        "特休結算計算",
+        "資遣費試算",
+        "失業給付估算",
+        "離職信產生器",
+        "Email範本",
+        "交接清單（可匯出CSV）",
+        "謀職假說明",
+        "數位安全指南"
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "離職預告期怎麼計算？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "根據勞基法第16條，預告期依年資計算：未滿3個月不需預告、3個月以上未滿1年需10天、1年以上未滿3年需20天、3年以上需30天。預告期間勞工可請謀職假，每週2天有薪。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "特休沒用完可以換錢嗎？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "可以。依勞基法第38條第4項，離職時未休完的特休假，雇主應折算工資發給勞工。計算方式為：剩餘特休天數 × 日薪（月薪÷30）。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "什麼情況可以領資遣費？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "非自願離職（公司資遣、裁員、歇業、業務縮減等）可領資遣費。新制（2005年7月1日後年資）為每滿1年發給0.5個月平均工資，未滿1年按比例計算。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "失業給付怎麼申請？領多少？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "非自願離職且就業保險年資滿1年可申請。給付金額為投保薪資的60%，最長可領6個月（45歲以上或身心障礙者可領9個月）。有扶養眷屬可加10-20%。需至公立就業服務站辦理。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "離職一定要寫離職信嗎？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "法律上口頭告知即可，但書面離職信可作為存證，避免日後爭議。建議以書面或Email方式提出，並保留紀錄。內容應包含離職日期、簡述原因、感謝。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "謀職假是什麼？怎麼請？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "依勞基法第16條第2項，預告期間勞工得於每週請假2日外出謀職，工資照給。需事先告知雇主，僅限在預告期間內使用。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "離職後勞健保怎麼處理？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "離職後勞健保由原公司退保。若無新工作，健保可至區公所以第六類身分加保；勞保則中斷（可改繳國民年金）。建議取得勞健保轉出單作為紀錄。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "離職時公司應給哪些文件？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "依法雇主應開立：1.離職證明書（載明離職原因代碼）、2.服務證明書（依勞基法§19）。此外建議索取：薪資單、扣繳憑單、勞健保轉出單。非自願離職者務必確認離職原因代碼正確，以利申請失業給付。"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Hello Ruru",
+          "item": "https://helloruru.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "離職全能導航幫手",
+          "item": "https://newday.helloruru.com"
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
