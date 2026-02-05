@@ -24,7 +24,7 @@ export const Btn: React.FC<{ onClick: () => void; disabled?: boolean; variant?: 
 );
 
 export const CopyBtn: React.FC<{ text: string; id: string; copiedId: string | null; onCopy: (text: string, id: string) => void }> = ({ text, id, copiedId, onCopy }) => (
-  <button onClick={() => onCopy(text, id)} className="flex items-center gap-1 px-3 py-1.5 bg-[#D4A5A5] text-white rounded-lg text-xs hover:bg-[#D4A5A5]/90 flex-shrink-0 whitespace-nowrap min-h-[44px]">
+  <button onClick={() => onCopy(text, id)} className="flex items-center gap-1 px-3 py-1.5 bg-[#D4A5A5] text-white rounded-3xl text-xs hover:bg-[#D4A5A5]/90 flex-shrink-0 whitespace-nowrap min-h-[44px]">
     {copiedId === id ? <CheckIcon className="w-3 h-3" /> : <CopyIcon className="w-3 h-3" />}
     {copiedId === id ? '已複製' : '複製'}
   </button>
@@ -72,10 +72,16 @@ export const Menu: React.FC<{ icon: ReactNode; title: string; desc: string; onCl
   </button>
 );
 
+const getFooterYear = () => {
+  const startYear = 2026;
+  const currentYear = new Date().getFullYear();
+  return currentYear > startYear ? `${startYear}–${currentYear}` : `${startYear}`;
+};
+
 export const Footer: React.FC = () => (
   <div className="mt-4 p-3 bg-white/80 rounded-3xl border border-gray-100 text-center overflow-hidden">
     <p className="text-xs text-gray-600 flex items-center justify-center gap-1"><AlertIcon className="w-3 h-3 text-amber-500" />依《勞基法》計算，僅供參考。諮詢請洽 <a href="tel:1955" className="text-[#D4A5A5] font-bold">1955</a></p>
     <Privacy />
-    <p className="text-xs text-gray-400 mt-2">© {new Date().getFullYear()} Kaoru Tsai. All Rights Reserved. | <a href="mailto:hello@helloruru.com" className="hover:text-[#D4A5A5]">hello@helloruru.com</a></p>
+    <p className="text-xs text-gray-400 mt-2">© {getFooterYear()} Kaoru Tsai. All Rights Reserved. | Contact: <a href="mailto:hello@helloruru.com" className="hover:text-[#D4A5A5]">hello@helloruru.com</a></p>
   </div>
 );

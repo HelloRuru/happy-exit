@@ -142,7 +142,7 @@ export const ResultPage = ({ form, calc, dateMode, setStage }: ResultPageProps) 
               <span className="text-gray-700 min-w-0">最長可領</span>
               <span className="font-bold flex-shrink-0">{calc.unemploymentMonths} 個月</span>
             </Row>
-            <div className="bg-white/50 rounded-lg p-2">
+            <div className="bg-white/50 rounded-3xl p-2">
               <p className="text-xs text-gray-600 font-medium">政府補助總計約</p>
               <p className="text-2xl font-bold text-blue-700">${calc.totalGovernmentBenefit.toLocaleString()}</p>
             </div>

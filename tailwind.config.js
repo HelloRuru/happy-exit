@@ -10,8 +10,8 @@ export default {
         lavender: { 300: '#C9B8D4', 400: '#B8A9C9', 500: '#9B7E93' },
       },
       fontFamily: {
-        heading: ['SweiSpringCJKtc-Sugar', 'Noto Sans TC', 'sans-serif'],
-        body: ['SweiSpringCJKtc', 'Noto Sans TC', 'sans-serif'],
+        heading: ['SweiSpringSugar', 'Noto Sans TC', 'sans-serif'],
+        body: ['SweiSpring', 'Noto Sans TC', 'sans-serif'],
         sans: ['Noto Sans TC', 'sans-serif'],
       },
       borderRadius: { '3xl': '24px' },
