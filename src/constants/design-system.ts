@@ -1,11 +1,10 @@
 /**
- * Design System v1.4
+ * Design System v1.6
  * ==================
  * 主色: #D4A5A5 (Rose)
  * 次色: #B8A9C9 (Lavender)
  * 圓角: 24px
- * 標題字體: 獅尾四季春加糖 (400/500/700)
- * 內文字體: 獅尾四季春 (300/400/500/700)
+ * 字體: 源泉圓體 GenSenRounded TW (400/500/700)
  * 12px以下: Noto Sans TC
  * Icon: SVG 線條風格，禁止 Emoji
  */
@@ -66,12 +65,12 @@ export const BORDER_RADIUS = {
 
 export const TYPOGRAPHY = {
   heading: {
-    fontFamily: "'SweiSpringCJKtc-Sugar', 'Noto Sans TC', sans-serif",
+    fontFamily: "'GenSenRounded', 'Noto Sans TC', sans-serif",
     weights: { normal: 400, medium: 500, bold: 700 },
   },
   body: {
-    fontFamily: "'SweiSpringCJKtc', 'Noto Sans TC', sans-serif",
-    weights: { light: 300, normal: 400, medium: 500, bold: 700 },
+    fontFamily: "'GenSenRounded', 'Noto Sans TC', sans-serif",
+    weights: { normal: 400, medium: 500, bold: 700 },
   },
   small: {
     fontFamily: "'Noto Sans TC', sans-serif",

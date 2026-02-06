@@ -2,27 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design System v1.5 — 獅尾字體（全域子集化） */
+/* Design System v1.6 Font Configuration */
+/* 字體: 源泉圓體 GenSenRounded TW（OFL 商用免費） */
 
 @font-face {
-  font-family: 'Swei Spring';
-  src: url('https://lab.helloruru.com/fonts/SweiSpring-Regular.woff2') format('woff2');
+  font-family: 'GenSenRounded';
+  src: url('https://lab.helloruru.com/fonts/GenSenRounded-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Swei Spring';
-  src: url('https://lab.helloruru.com/fonts/SweiSpring-Medium.woff2') format('woff2');
+  font-family: 'GenSenRounded';
+  src: url('https://lab.helloruru.com/fonts/GenSenRounded-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Swei Sugar';
-  src: url('https://lab.helloruru.com/fonts/SweiSugar-Bold.woff2') format('woff2');
+  font-family: 'GenSenRounded';
+  src: url('https://lab.helloruru.com/fonts/GenSenRounded-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -37,8 +38,8 @@
   --color-text-secondary: #6B5B5B;
   --radius-lg: 24px;
   --shadow-md: 0 4px 24px rgba(212, 165, 165, 0.12);
-  --font-heading: 'Swei Sugar', 'Noto Sans TC', sans-serif;
-  --font-body: 'Swei Spring', 'Noto Sans TC', sans-serif;
+  --font-heading: 'GenSenRounded', 'Noto Sans TC', sans-serif;
+  --font-body: 'GenSenRounded', 'Noto Sans TC', sans-serif;
   --font-small: 'Noto Sans TC', sans-serif;
 }
 
