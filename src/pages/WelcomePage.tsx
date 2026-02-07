@@ -2,7 +2,7 @@
  * Welcome Page
  */
 
-import { Card, Privacy } from '../components/ui';
+import { Card, Footer } from '../components/ui';
 import { Page } from '../components/ui';
 import { StarIcon, CheckIcon, SunIcon } from '../components/icons';
 import { WELCOME_CONTENT } from '../constants';
@@ -45,7 +45,7 @@ export const WelcomePage = ({ setStage }: WelcomePageProps) => (
         <SunIcon className="w-5 h-5" />
         {WELCOME_CONTENT.START_BUTTON}
       </button>
-      <Privacy />
     </div>
+    <Footer />
   </Page>
 );
