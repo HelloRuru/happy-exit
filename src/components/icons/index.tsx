@@ -248,15 +248,3 @@ export const LinkIcon: React.FC<IconProps> = ({ className = "w-5 h-5" }) => (
     <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
   </svg>
 );
-
-export const FlowerLogo: React.FC<IconProps> = ({ className = "w-8 h-8" }) => (
-  <svg viewBox="0 0 64 64" fill="none" className={className}>
-    <ellipse cx="32" cy="24" rx="4" ry="7" fill="#D4A5A5" opacity="0.6" transform="rotate(0 32 32)"/>
-    <ellipse cx="32" cy="24" rx="4" ry="7" fill="#B8A9C9" opacity="0.5" transform="rotate(60 32 32)"/>
-    <ellipse cx="32" cy="24" rx="4" ry="7" fill="#E8B4B8" opacity="0.5" transform="rotate(120 32 32)"/>
-    <ellipse cx="32" cy="24" rx="4" ry="7" fill="#C4B7D7" opacity="0.5" transform="rotate(180 32 32)"/>
-    <ellipse cx="32" cy="24" rx="4" ry="7" fill="#F5D0C5" opacity="0.5" transform="rotate(240 32 32)"/>
-    <ellipse cx="32" cy="24" rx="4" ry="7" fill="#FEDFE1" opacity="0.5" transform="rotate(300 32 32)"/>
-    <circle cx="32" cy="32" r="4" fill="#D4A5A5" opacity="0.8"/>
-  </svg>
-);

@@ -3,25 +3,11 @@
  * 圓角: 24px | 主色: #D4A5A5 | 次色: #B8A9C9
  */
 import React, { ReactNode, memo } from 'react';
-import { LockIcon, AlertIcon, InfoIcon, ChevronRight, CopyIcon, CheckIcon, FlowerLogo } from '../icons';
-
-const SiteHeader: React.FC = () => (
-  <header className="flex items-center justify-center gap-2 pt-2 pb-1">
-    <a href="https://lab.helloruru.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 opacity-60 hover:opacity-90 transition-opacity">
-      <FlowerLogo className="w-6 h-6" />
-      <span className="text-xs font-bold tracking-widest" style={{ background: 'linear-gradient(135deg, #D4A5A5, #B8A9C9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Hello Ruru</span>
-    </a>
-    <span className="text-gray-300">|</span>
-    <span className="text-xs text-gray-400 tracking-wide">離職全能導航幫手</span>
-  </header>
-);
+import { LockIcon, AlertIcon, InfoIcon, ChevronRight, CopyIcon, CheckIcon } from '../icons';
 
 export const Page: React.FC<{ children: ReactNode }> = ({ children }) => (
   <div className="min-h-screen w-full bg-gradient-to-br from-[#FFF9F0] to-[#D4A5A5]/10 p-3 sm:p-4 md:p-6 overflow-x-hidden">
-    <div className="w-full max-w-2xl mx-auto space-y-4">
-      <SiteHeader />
-      {children}
-    </div>
+    <div className="w-full max-w-2xl mx-auto space-y-4">{children}</div>
   </div>
 );
 
