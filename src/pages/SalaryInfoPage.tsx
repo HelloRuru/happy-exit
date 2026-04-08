@@ -3,7 +3,7 @@
  */
 
 import { Page } from '../components/ui';
-import { Card, Footer, Progress, Enc, Btn } from '../components/ui';
+import { Card, Footer, OhruruRecommend, Progress, Enc, Btn } from '../components/ui';
 import { CoinIcon, ShieldIcon, ChevronLeft, ChevronRight } from '../components/icons';
 import { ENCOURAGEMENT, FORM_LABELS, FORM_HINTS, FORM_PLACEHOLDERS, BUTTON_TEXT } from '../constants';
 import type { StageName, FormData, DateMode } from '../types';
@@ -132,6 +132,7 @@ export const SalaryInfoPage = ({ form, dateMode, updateForm, setStage, doCalc }:
         {BUTTON_TEXT.CALCULATE} <ChevronRight className="w-4 h-4" />
       </Btn>
     </div>
+    <OhruruRecommend />
     <Footer />
   </Page>
 );

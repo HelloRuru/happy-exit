@@ -3,7 +3,7 @@
  */
 
 import { Page } from '../components/ui';
-import { Card, Footer, Progress, Legal, Enc, Btn } from '../components/ui';
+import { Card, Footer, OhruruRecommend, Progress, Legal, Enc, Btn } from '../components/ui';
 import { SproutIcon, ChevronLeft, ChevronRight } from '../components/icons';
 import { ENCOURAGEMENT, FORM_LABELS, BUTTON_TEXT } from '../constants';
 import type { StageName, FormData } from '../types';
@@ -37,6 +37,7 @@ export const JoinDatePage = ({ form, updateForm, setStage }: JoinDatePageProps) 
         {BUTTON_TEXT.NEXT} <ChevronRight className="w-4 h-4" />
       </Btn>
     </div>
+    <OhruruRecommend />
     <Footer />
   </Page>
 );

@@ -3,7 +3,7 @@
  */
 
 import { Page } from '../components/ui';
-import { Card, Footer, Legal, Enc, Btn, Row, CopyBtn } from '../components/ui';
+import { Card, Footer, OhruruRecommend, Legal, Enc, Btn, Row, CopyBtn } from '../components/ui';
 import { SearchIcon, ChevronLeft } from '../components/icons';
 import { generateJobSearchLeaveRequest } from '../utils/letters';
 import { ENCOURAGEMENT, BUTTON_TEXT, JOB_SEARCH_LEAVE_INFO } from '../constants';
@@ -47,6 +47,7 @@ export const JobSearchPage = ({ form, calc, copiedId, copy, setStage }: JobSearc
           <ChevronLeft className="w-4 h-4" /> {BUTTON_TEXT.BACK}
         </Btn>
       </div>
+      <OhruruRecommend />
       <Footer />
     </Page>
   );

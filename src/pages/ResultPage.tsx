@@ -3,7 +3,7 @@
  */
 
 import { Page } from '../components/ui';
-import { Card, Footer, Progress, Legal, Enc, Btn, Row } from '../components/ui';
+import { Card, Footer, OhruruRecommend, Progress, Legal, Enc, Btn, Row } from '../components/ui';
 import {
   ChartIcon,
   AlertIcon,
@@ -159,6 +159,7 @@ export const ResultPage = ({ form, calc, dateMode, setStage }: ResultPageProps) 
         {BUTTON_TEXT.MENU} <ChevronRight className="w-4 h-4" />
       </Btn>
     </div>
+    <OhruruRecommend />
     <Footer />
   </Page>
 );

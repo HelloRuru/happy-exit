@@ -4,7 +4,7 @@
 
 import { useMemo } from 'react';
 import { Page } from '../components/ui';
-import { Card, Footer, Progress, Enc, Btn, Row, CopyBtn } from '../components/ui';
+import { Card, Footer, OhruruRecommend, Progress, Enc, Btn, Row, CopyBtn } from '../components/ui';
 import {
   FileIcon,
   BriefcaseIcon,
@@ -98,6 +98,7 @@ export const LetterResultPage = ({
           {BUTTON_TEXT.BACK} <ChevronRight className="w-4 h-4" />
         </Btn>
       </div>
+      <OhruruRecommend />
       <Footer />
     </Page>
   );

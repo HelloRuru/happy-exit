@@ -3,7 +3,7 @@
  */
 
 import { Page } from '../components/ui';
-import { Card, Footer } from '../components/ui';
+import { Card, Footer, OhruruRecommend } from '../components/ui';
 import { PartyIcon, StarIcon, ClipboardIcon, InfoIcon, HomeIcon } from '../components/icons';
 import type { StageName } from '../types';
 
@@ -84,6 +84,7 @@ export const CompletePage = ({ setStage, reset }: CompletePageProps) => (
         </button>
       </div>
     </div>
+    <OhruruRecommend />
     <Footer />
   </Page>
 );

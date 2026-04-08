@@ -3,7 +3,7 @@
  */
 
 import { Page } from '../components/ui';
-import { Footer, Enc, Btn, Menu } from '../components/ui';
+import { Footer, OhruruRecommend, Enc, Btn, Menu } from '../components/ui';
 import {
   ClipboardIcon,
   PenIcon,
@@ -74,6 +74,7 @@ export const MenuPage = ({ form, calc, setStage }: MenuPageProps) => (
         {BUTTON_TEXT.COMPLETE} <PartyIcon className="w-4 h-4" />
       </Btn>
     </div>
+    <OhruruRecommend />
     <Footer />
   </Page>
 );

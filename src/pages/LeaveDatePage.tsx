@@ -3,7 +3,7 @@
  */
 
 import { Page } from '../components/ui';
-import { Card, Footer, Progress, Enc, Btn } from '../components/ui';
+import { Card, Footer, OhruruRecommend, Progress, Enc, Btn } from '../components/ui';
 import { CalendarIcon, ChevronLeft, ChevronRight, CheckIcon, InfoIcon } from '../components/icons';
 import { calcTenure } from '../utils/calculations';
 import { ENCOURAGEMENT, FORM_LABELS, BUTTON_TEXT, LEAVE_DATE_OPTIONS } from '../constants';
@@ -115,6 +115,7 @@ export const LeaveDatePage = ({
           {BUTTON_TEXT.NEXT} <ChevronRight className="w-4 h-4" />
         </Btn>
       </div>
+      <OhruruRecommend />
       <Footer />
     </Page>
   );

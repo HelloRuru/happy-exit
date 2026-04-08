@@ -4,7 +4,7 @@
 
 import { useMemo, useCallback } from 'react';
 import { Page } from '../components/ui';
-import { Card, Footer, Progress, Enc, Btn, Row } from '../components/ui';
+import { Card, Footer, OhruruRecommend, Progress, Enc, Btn, Row } from '../components/ui';
 import { CheckIcon, DownloadIcon, ChevronLeft, ChevronRight } from '../components/icons';
 import { checklistCategories } from '../data/checklist';
 import { exportToCSV, exportToHTML } from '../utils/export';
@@ -111,6 +111,7 @@ export const ChecklistPage = ({ checklist, toggleCheck, setStage }: ChecklistPag
           確認權益 <ChevronRight className="w-4 h-4" />
         </Btn>
       </div>
+      <OhruruRecommend />
       <Footer />
     </Page>
   );

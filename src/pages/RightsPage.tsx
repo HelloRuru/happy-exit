@@ -3,7 +3,7 @@
  */
 
 import { Page } from '../components/ui';
-import { Card, Footer, Progress, Legal, Enc, Btn, Row } from '../components/ui';
+import { Card, Footer, OhruruRecommend, Progress, Legal, Enc, Btn, Row } from '../components/ui';
 import {
   CoinIcon,
   UmbrellaIcon,
@@ -228,6 +228,7 @@ export const RightsPage = ({ form, calc, setStage }: RightsPageProps) => (
         數位安全 <ChevronRight className="w-4 h-4" />
       </Btn>
     </div>
+    <OhruruRecommend />
     <Footer />
   </Page>
 );

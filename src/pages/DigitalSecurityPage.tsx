@@ -3,7 +3,7 @@
  */
 
 import { Page } from '../components/ui';
-import { Card, Footer, Progress, Warn, Enc, Btn } from '../components/ui';
+import { Card, Footer, OhruruRecommend, Progress, Warn, Enc, Btn } from '../components/ui';
 import {
   KeyIcon,
   AlertIcon,
@@ -117,6 +117,7 @@ export const DigitalSecurityPage = ({ setStage }: DigitalSecurityPageProps) => (
         {BUTTON_TEXT.COMPLETE} <PartyIcon className="w-4 h-4" />
       </Btn>
     </div>
+    <OhruruRecommend />
     <Footer />
   </Page>
 );

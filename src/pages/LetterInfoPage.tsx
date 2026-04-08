@@ -4,7 +4,7 @@
 
 import { useCallback } from 'react';
 import { Page } from '../components/ui';
-import { Card, Footer, Progress, Enc, Btn } from '../components/ui';
+import { Card, Footer, OhruruRecommend, Progress, Enc, Btn } from '../components/ui';
 import { PenIcon, ChevronLeft, ChevronRight } from '../components/icons';
 import { ENCOURAGEMENT, BUTTON_TEXT, REASON_OPTIONS, TONE_OPTIONS } from '../constants';
 import type { StageName, FormData } from '../types';
@@ -136,6 +136,7 @@ export const LetterInfoPage = ({ form, updateForm, setStage }: LetterInfoPagePro
           {BUTTON_TEXT.GENERATE} <ChevronRight className="w-4 h-4" />
         </Btn>
       </div>
+      <OhruruRecommend />
       <Footer />
     </Page>
   );

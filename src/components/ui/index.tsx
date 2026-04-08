@@ -72,6 +72,24 @@ export const Menu: React.FC<{ icon: ReactNode; title: string; desc: string; onCl
   </button>
 ));
 
+export const OhruruRecommend: React.FC = () => (
+  <div className="mt-6 mb-2 mx-auto max-w-[640px]">
+    <div className="relative overflow-hidden rounded-2xl border border-[#D4A5A5]/25 bg-white shadow-sm p-6 transition-all hover:border-[#D4A5A5]/45 hover:shadow-md">
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#D4A5A5] to-[#B8A9C9] opacity-70" />
+      <div className="flex items-center gap-1.5 text-[11px] font-bold tracking-widest text-[#D4A5A5] mb-3">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#D4A5A5]" />
+        RECOMMENDED SERVICE
+      </div>
+      <h3 className="text-lg font-bold text-gray-800 mb-2">離開公司，社群是第一張名片</h3>
+      <p className="text-sm text-gray-500 leading-relaxed mb-4">帶著作品出來接案，第一個問題通常是沒有持續更新的地方。社群代操幫你穩定經營，讓潛在客戶找得到你。</p>
+      <a href="https://ohruru.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-medium text-[#D4A5A5] transition-all hover:gap-2 hover:opacity-85">
+        ohruru.com
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+);
+
 const getFooterYear = () => {
   const startYear = 2026;
   const currentYear = new Date().getFullYear();

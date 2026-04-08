@@ -2,7 +2,7 @@
  * Welcome Page
  */
 
-import { Card, Footer } from '../components/ui';
+import { Card, Footer, OhruruRecommend } from '../components/ui';
 import { Page } from '../components/ui';
 import { StarIcon, CheckIcon, SunIcon } from '../components/icons';
 import { WELCOME_CONTENT } from '../constants';
@@ -46,6 +46,7 @@ export const WelcomePage = ({ setStage }: WelcomePageProps) => (
         {WELCOME_CONTENT.START_BUTTON}
       </button>
     </div>
+    <OhruruRecommend />
     <Footer />
   </Page>
 );
